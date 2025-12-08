@@ -10,7 +10,7 @@ const connectDB = async()=>{
         console.log("la connections avec la base de donnes avec succes ")
 
     } catch (error) {
-        console.error("erreur lors de la connections");
+        console.error("erreur lors de la connections" ,  error.message);
         process.exit(1);
     }
 }

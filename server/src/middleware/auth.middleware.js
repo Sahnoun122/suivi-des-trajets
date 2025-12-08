@@ -27,17 +27,16 @@ export const authenticateToken = async(req , res , next)=>{
     }
 }
 
-export const roles = (roles)=>{
-    return (req , res , next)=>{
-        if(!req.userModel){
-            return res.status(401).json({message : "authentifications requis"});
-
-        }
-
-        if(!roles.includes(req.userModel.role)){
-            return res.status(403).json({message : "acces non autorise "})
-        }
-
-        next();
+export const roles = (rolesArray) => {
+  return (req, res, next) => {
+    if (!req.user) {
+      return res.status(401).json({ message: "authentification requise" });
     }
-}
+
+    if (!rolesArray.includes(req.user.role)) {
+      return res.status(403).json({ message: "acces non autorisé" });
+    }
+
+    next();
+  };
+};

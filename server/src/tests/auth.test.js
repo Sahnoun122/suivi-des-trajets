@@ -39,7 +39,6 @@ describe("Auth Tests", () => {
   });
 
   test("POST /api/auth/login → doit connecter un utilisateur", async () => {
-    // on crée l'user dans la db
     await request(app).post("/api/auth/register").send({
       name: "Login User",
       email: "login@gmail.com",
@@ -50,7 +49,6 @@ describe("Auth Tests", () => {
       status: "active",
     });
 
-    // login
     const res = await request(app).post("/api/auth/login").send({
       email: "login@gmail.com",
       password: "123456",
@@ -62,7 +60,6 @@ describe("Auth Tests", () => {
   });
 
   test("POST /api/auth/login → refuse mauvais mot de passe", async () => {
-    // création user
     await request(app).post("/api/auth/register").send({
       name: "BadPass User",
       email: "badpass@gmail.com",

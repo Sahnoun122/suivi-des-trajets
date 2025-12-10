@@ -5,14 +5,15 @@ import {
   updateTruck,
   deleteTruck,
 } from "../controllers/truck.controller.js";
-import { isAdmin } from "../middleware/auth.middleware.js";
-import { verifyToken } from "../config/jwt.js";
+
+import { authenticateToken, isAdmin } from "../middleware/auth.middleware.js";
 
 const router = express.Router();
 
-router.post("/", verifyToken, isAdmin, createTruck);
-router.get("/", verifyToken, getTrucks);
-router.put("/:id", verifyToken, isAdmin, updateTruck);
-router.delete("/:id", verifyToken, isAdmin, deleteTruck);
+router.post("/", authenticateToken, isAdmin, createTruck);
+router.put("/:id", authenticateToken, isAdmin, updateTruck);
+router.delete("/:id", authenticateToken, isAdmin, deleteTruck);
+
+router.get("/", authenticateToken, getTrucks);
 
 export default router;

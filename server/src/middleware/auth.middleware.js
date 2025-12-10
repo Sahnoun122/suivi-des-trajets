@@ -1,52 +1,54 @@
 import { verifyToken } from "../config/jwt.js";
-import userModel from "../models/user.model.js";
+import User from "../models/user.model.js";
 
 
-export const authenticateToken = async(req , res , next)=>{
-    try {
-        const authheader = req.headers['authorization'];
-        const token = authheader && authheader.split(' ')[1];
+export const authenticateToken = async (req, res, next) => {
+  try {
+    const authHeader = req.headers["authorization"];
 
-        if(!token){
-            return res.status(401).json({message : "token non acces"})
-        };
+    const token = authHeader && authHeader.split(" ")[1];
 
-        const decode = verifyToken(token);
-
-        const user = await userModel.findById(decode.id).select("-password");
-
-        if(!user){
-            return res.status(401).json({message : "utilisateur non trouver "})
-        }
-
-        req.user = user;
-        next();
-    } catch (error) {
-        console.error('erreur dauthentifications ' , error)
-        return res.status(403).json({message : "token invalide ou expire "})
+    if (!token) {
+      return res.status(401).json({ message: "Token manquant" });
     }
-}
 
-export const roles = (rolesArray) => {
+    const decoded = verifyToken(token);
+
+    const user = await User.findById(decoded.id).select("-password");
+
+    if (!user) {
+      return res.status(404).json({ message: "Utilisateur introuvable" });
+    }
+
+    req.user = user; 
+    next();
+  } catch (err) {
+    console.error("Erreur JWT:", err.message);
+    return res.status(403).json({ message: "Token invalide ou expiré" });
+  }
+};
+
+export const roles = (allowedRoles = []) => {
   return (req, res, next) => {
     if (!req.user) {
-      return res.status(401).json({ message: "authentification requise" });
+      return res.status(401).json({ message: "Authentification requise" });
     }
 
-    if (!rolesArray.includes(req.user.role)) {
-      return res.status(403).json({ message: "acces non autorisé" });
+    if (!allowedRoles.includes(req.user.role)) {
+      return res
+        .status(403)
+        .json({ message: "Accès refusé (rôle insuffisant)" });
     }
 
     next();
   };
-
-
 };
 
-  export const isAdmin= (req , res, next)=>{
-    if(req.user.role == "admin"){
-      return res.status(401).json({message : "action non autorise "})
-    }
-
-    next();
+export const isAdmin = (req, res, next) => {
+  if (req.user.role !== "admin") {
+    return res
+      .status(403)
+      .json({ message: "Action réservée à l'administrateur" });
   }
+  next();
+};

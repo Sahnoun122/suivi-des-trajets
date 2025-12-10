@@ -11,6 +11,11 @@ import pneuRoutes from "./routes/pneu.routes.js";
 import { errorHandler } from "./middleware/error.middleware.js";
 import tripRoutes from "./routes/trip.routes.js";
 
+
+import fuelLogRoutes from "./routes/fuelLog.routes.js";
+import maintenanceRoutes from "./routes/maintenance.routes.js";
+
+
 dotenv.config();
 
 const app = express();
@@ -26,6 +31,8 @@ app.use("/api/trucks", truckRoutes);
 app.use("/api/remorques", remorqueRoutes);
 app.use("/api/pneus", pneuRoutes);
 app.use("/api/trips", tripRoutes);
+app.use("/api/fuelLogs", fuelLogRoutes);
+app.use("/api/maintenances", maintenanceRoutes);
 
 
 app.use(errorHandler);

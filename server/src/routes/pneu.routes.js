@@ -5,14 +5,13 @@ import {
   updatePneu,
   deletePneu,
 } from "../controllers/pneu.controller.js";
-import {  isAdmin } from "../middleware/auth.middleware.js";
-import { verifyToken } from "../config/jwt.js";
+import  {authenticateToken, isAdmin  } from "../middleware/auth.middleware.js";
 
 const router = express.Router();
 
-router.post("/", verifyToken, isAdmin, createPneu);
-router.get("/", verifyToken, getPneus);
-router.put("/:id", verifyToken, isAdmin, updatePneu);
-router.delete("/:id", verifyToken, isAdmin, deletePneu);
+router.post("/", authenticateToken, isAdmin, createPneu);
+router.get("/", authenticateToken, getPneus);
+router.put("/:id", authenticateToken, isAdmin, updatePneu);
+router.delete("/:id", authenticateToken, isAdmin, deletePneu);
 
 export default router;

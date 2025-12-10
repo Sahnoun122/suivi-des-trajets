@@ -4,6 +4,9 @@ import cors from "cors";
 import authRoutes from "./routes/auth.routes.js";
 import { p } from "framer-motion/client";
 
+
+import truckRoutes from "./routes/truckRoutes.js";
+
 dotenv.config();
 
 const app = express();
@@ -15,6 +18,7 @@ app.use(cors());
 
 app.use("/api/auth", authRoutes);
 
+app.use("/api/trucks", truckRoutes);
 
 // const PORT = 6000;
 

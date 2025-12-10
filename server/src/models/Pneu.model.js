@@ -2,34 +2,28 @@ import mongoose from "mongoose";
 
 const pneuSchema = new mongoose.Schema(
   {
-    serialNumber: {
-      type: String,
-      required: true,
-      unique: true,
-    },
+    numeroSerie: { type: String, required: true, unique: true },
 
-    brand: { type: String, required: true },
+    marque: { type: String, required: true },
     type: { type: String, required: true },
 
-    kilometrage: {
-      type: Number,
-      default: 0,
-    },
+    kilometrage: { type: Number, default: 0 },
 
-    installedAt: {
-      type: Date,
-      default: Date.now,
-    },
+    installeLe: { type: Date, default: Date.now },
 
-    status: {
+    statut: {
       type: String,
-      enum: ["good", "to_replace", "damaged"],
-      default: "good",
+      enum: ["bon", "a_remplacer", "endommagé"],
+      default: "bon",
     },
 
-    mountedOn: {
-      kind: { type: String, enum: ["Truck", "Remorque"], required: true },
-      item: { type: mongoose.Schema.Types.ObjectId, required: true },
+    monteSur: {
+      typeMateriel: {
+        type: String,
+        enum: ["Camion", "Remorque"],
+        required: true,
+      },
+      materielId: { type: mongoose.Schema.Types.ObjectId, required: true },
     },
   },
   { timestamps: true }

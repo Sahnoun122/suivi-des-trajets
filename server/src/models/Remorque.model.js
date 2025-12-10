@@ -2,29 +2,24 @@ import mongoose from "mongoose";
 
 const remorqueSchema = new mongoose.Schema(
   {
-    matricule: {
-      type: String,
-      required: true,
-      unique: true,
-    },
+    matricule: { type: String, required: true, unique: true },
+
     type: {
       type: String,
-      enum: ["benne", "frig", "plateau", "autre"],
+      enum: ["benne", "frigorifique", "plateau", "autre"],
       required: true,
     },
+
     poidsVide: Number,
     poidsMax: Number,
 
-    status: {
+    statut: {
       type: String,
       enum: ["active", "maintenance", "inactive"],
       default: "active",
     },
 
-    truck: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Truck",
-    },
+    camion: { type: mongoose.Schema.Types.ObjectId, ref: "Truck" },
   },
   { timestamps: true }
 );

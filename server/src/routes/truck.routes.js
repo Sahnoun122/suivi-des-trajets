@@ -4,8 +4,8 @@ import {
   getTrucks,
   updateTruck,
   deleteTruck,
-} from "../controllers/truckController.js";
-import { isAdmin } from "../middleware/auth.js";
+} from "../controllers/truck.controller.js";
+import { isAdmin } from "../middleware/auth.middleware.js";
 import { verifyToken } from "../config/jwt.js";
 
 const router = express.Router();

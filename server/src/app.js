@@ -5,7 +5,9 @@ import authRoutes from "./routes/auth.routes.js";
 import { p } from "framer-motion/client";
 
 
-import truckRoutes from "./routes/truckRoutes.js";
+import truckRoutes from "./routes/truck.routes.js";
+import remorqueRoutes from "./routes/remorque.routes.js";
+
 
 dotenv.config();
 
@@ -19,6 +21,7 @@ app.use(cors());
 app.use("/api/auth", authRoutes);
 
 app.use("/api/trucks", truckRoutes);
+app.use("/api/remorques", remorqueRoutes);
 
 // const PORT = 6000;
 

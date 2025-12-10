@@ -1,4 +1,4 @@
-import TruckModel from "../models/Truck.model";
+import TruckModel from "../models/Truck.model.js";
 
 export const creatTrucker = async(req , res)=>{
     try {

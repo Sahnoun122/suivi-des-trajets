@@ -9,6 +9,7 @@ import truckRoutes from "./routes/truck.routes.js";
 import remorqueRoutes from "./routes/remorque.routes.js";
 import pneuRoutes from "./routes/pneu.routes.js";
 import { errorHandler } from "./middleware/error.middleware.js";
+import tripRoutes from "./routes/trip.routes.js";
 
 dotenv.config();
 
@@ -24,6 +25,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/trucks", truckRoutes);
 app.use("/api/remorques", remorqueRoutes);
 app.use("/api/pneus", pneuRoutes);
+app.use("/api/trips", tripRoutes);
+
 
 app.use(errorHandler);
 

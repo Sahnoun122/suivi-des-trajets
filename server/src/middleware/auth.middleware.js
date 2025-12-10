@@ -1,5 +1,5 @@
-import { verifyToken } from "../config/jwt";
-import userModel from "../models/user.model";
+import { verifyToken } from "../config/jwt.js";
+import userModel from "../models/user.model.js";
 
 
 export const authenticateToken = async(req , res , next)=>{
@@ -44,7 +44,7 @@ export const roles = (rolesArray) => {
 };
 
   export const isAdmin= (req , res, next)=>{
-    if(req.user.role !== "admin"){
+    if(req.user.role == "admin"){
       return res.status(401).json({message : "action non autorise "})
     }
 

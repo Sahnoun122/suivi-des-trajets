@@ -8,7 +8,7 @@ import { p } from "framer-motion/client";
 import truckRoutes from "./routes/truck.routes.js";
 import remorqueRoutes from "./routes/remorque.routes.js";
 import pneuRoutes from "./routes/pneu.routes.js";
-
+import { errorHandler } from "./middleware/error.middleware.js";
 
 dotenv.config();
 
@@ -24,6 +24,9 @@ app.use("/api/auth", authRoutes);
 app.use("/api/trucks", truckRoutes);
 app.use("/api/remorques", remorqueRoutes);
 app.use("/api/pneus", pneuRoutes);
+
+app.use(errorHandler);
+
 
 
 // const PORT = 6000;

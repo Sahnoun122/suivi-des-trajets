@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import api from "../api/api";
 
 export const AuthContext = createContext();
@@ -10,7 +10,6 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-     
       const storedUser = JSON.parse(localStorage.getItem("user"));
       if (storedUser) setUser(storedUser);
     }

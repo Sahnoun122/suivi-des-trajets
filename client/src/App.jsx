@@ -1,11 +1,11 @@
-import { BrowserRouter , Routes , Route } from "react-router-dom"
-import Register from "./pages/Register"
-import Dashboard from "./pages/Dashboard"
-import PrivateRoute from "./components/PrivateRoute"
-import Login from "./pages/Login"
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
+import PrivateRoute from "./components/PrivateRoute";
+import Login from "./pages/Login";
 
 function App() {
-  
   return (
     <BrowserRouter>
       <Routes>
@@ -24,7 +24,6 @@ function App() {
       </Routes>
     </BrowserRouter>
   );
-
 }
 
-export default App
+export default App;

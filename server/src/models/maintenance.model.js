@@ -7,20 +7,15 @@ const maintenanceSchema = new mongoose.Schema(
       enum: ["vidange", "changement_pneu", "inspection", "reparation"],
       required: true,
     },
-
     camionId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Truck",
       required: true,
     },
-
     pneuId: { type: mongoose.Schema.Types.ObjectId, ref: "Pneu" },
-
-    programmeLe: Date,
+    programmeLe: { type: Date, required: true },
     effectueLe: Date,
-
     cout: Number,
-
     effectuePar: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

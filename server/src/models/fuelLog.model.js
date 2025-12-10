@@ -12,12 +12,9 @@ const fuelLogSchema = new mongoose.Schema(
       ref: "Trip",
       required: true,
     },
-
     litres: { type: Number, required: true },
     cout: { type: Number, required: true },
-
     odometre: { type: Number, required: true },
-
     enregistrePar: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

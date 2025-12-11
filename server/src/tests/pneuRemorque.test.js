@@ -40,7 +40,7 @@ describe("Tests Pneu & Remorque API", () => {
     statut: "bon",
     monteSur: {
       typeMateriel: "Camion",
-      materielId: new mongoose.Types.ObjectId(), // ID fictif
+      materielId: new mongoose.Types.ObjectId(),
     },
   };
 
@@ -52,7 +52,6 @@ describe("Tests Pneu & Remorque API", () => {
     statut: "active",
   };
 
-  // ====== PNEU TESTS ======
   it("Admin peut créer un pneu", async () => {
     const res = await request(app)
       .post("/api/pneus")

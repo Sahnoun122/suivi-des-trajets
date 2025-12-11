@@ -1,4 +1,4 @@
-import Trip from "../models/Trip.model.js";
+import Trip from "../models/Trajets.model.js";
 import PDFDocument from "pdfkit";
 
 
@@ -77,7 +77,7 @@ export const updateTripStatus = async (req, res, next) => {
 };
 
 
-export const submitTripDetails = async (req, res, next) => {
+export const updateTripDetails = async (req, res, next) => {
   try {
     const {
       odometreDebut,

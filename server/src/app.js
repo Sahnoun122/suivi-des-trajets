@@ -15,6 +15,7 @@ import tripRoutes from "./routes/trip.routes.js";
 import fuelLogRoutes from "./routes/fuelLog.routes.js";
 import maintenanceRoutes from "./routes/maintenance.routes.js";
 import driverRoutes from "./routes/driver.routes.js";
+import adminRoutes from "./routes/admin.routes.js";
 
 
 dotenv.config();
@@ -36,6 +37,7 @@ app.use("/api/fuelLogs", fuelLogRoutes);
 app.use("/api/maintenances", maintenanceRoutes);
 app.use("/api/driver", driverRoutes);
 
+app.use("/api/admin", adminRoutes);
 
 app.use(errorHandler);
 

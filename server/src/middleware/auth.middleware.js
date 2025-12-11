@@ -52,3 +52,11 @@ export const isAdmin = (req, res, next) => {
   }
   next();
 };
+
+export const isDriver = (req, res, next) => {
+  if (!req.user)
+    return res.status(401).json({ message: "Authentification requise" });
+  if (req.user.role !== "driver")
+    return res.status(403).json({ message: "Accès réservé aux chauffeurs" });
+  next();
+};

@@ -11,6 +11,10 @@ import AdminLayout from "./components/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import Drivers from "./pages/admin/Drivers";
 import Trucks from "./pages/admin/Trucks";
+import Remorques from "./pages/admin/Remorques";
+// import Trips from "./pages/admin/Trips";
+// import Maintenance from "./pages/admin/Maintenance";
+
 function App() {
   return (
     <BrowserRouter>
@@ -38,9 +42,9 @@ function App() {
           <Route index element={<AdminDashboard />} />
           <Route path="drivers" element={<Drivers />} />
           <Route path="trucks" element={<Trucks />} />
-          {/* <Route path="remorques" element={<Remorques />} />
-          <Route path="trips" element={<Trips />} />
-          <Route path="maintenance" element={<Maintenance />} /> */}
+          <Route path="remorques" element={<Remorques />} />
+          {/* <Route path="trips" element={<Trips />} /> */}
+          {/* <Route path="maintenance" element={<Maintenance />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>

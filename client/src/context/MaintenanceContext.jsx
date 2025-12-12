@@ -10,7 +10,7 @@ export const MaintenanceProvider = ({ children }) => {
   const fetchMaintenances = async () => {
     try {
       setLoading(true);
-      const res = await api.get("/maintenance");
+      const res = await api.get("/maintenances");
       setMaintenances(res.data);
     } catch (err) {
       console.error(err);
@@ -21,8 +21,8 @@ export const MaintenanceProvider = ({ children }) => {
 
   const createMaintenance = async (data) => {
     try {
-      const res = await api.post("/maintenance", data);
-      setMaintenances([...maintenances, res.data]);
+      const res = await api.post("/maintenances", data);
+      fetchMaintenances();
     } catch (err) {
       console.error(err);
     }
@@ -30,12 +30,17 @@ export const MaintenanceProvider = ({ children }) => {
 
   const updateMaintenance = async (id, data) => {
     try {
-      const res = await api.put(`/maintenance/${id}`, data);
-      setMaintenances(maintenances.map((m) => (m._id === id ? res.data : m)));
+      const res = await api.put(`/maintenances/${id}`, data);
+      fetchMaintenances();
     } catch (err) {
       console.error(err);
+      throw err;
     }
   };
+
+  useEffect(() => {
+    fetchMaintenances();
+  }, []);
 
   return (
     <MaintenanceContext.Provider

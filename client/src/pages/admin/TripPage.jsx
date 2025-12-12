@@ -29,9 +29,9 @@ const TripPage = () => {
                 ? t.pointsIntermediaires.join(", ")
                 : "N/A"}
             </p>
-            <p>Chauffeur: {t.chauffeurId?.name || "N/A"}</p>
-            <p>Camion: {t.camionId?.matricule || "N/A"}</p>
-            <p>Remorque: {t.remorqueId?.matricule || "N/A"}</p>
+            <p>Chauffeur: {t.chauffeurId?.name || "Non assigné"}</p>
+            <p>Camion: {t.camionId?.matricule ? `${t.camionId.matricule} - ${t.camionId.marque} ${t.camionId.modele || ''}` : "Non assigné"}</p>
+            <p>Remorque: {t.remorqueId?.matricule ? `${t.remorqueId.matricule} - ${t.remorqueId.type}` : "Non assignée"}</p>
             <p>Statut: {t.statut}</p>
             <p>Odomètre début: {t.odometreDebut || "N/A"}</p>
             <p>Odomètre fin: {t.odometreFin || "N/A"}</p>

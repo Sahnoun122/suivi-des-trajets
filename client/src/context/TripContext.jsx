@@ -13,7 +13,7 @@ export const TripProvider = ({ children }) => {
       const res = await api.get("/trips");
       setTrips(res.data);
     } catch (err) {
-      console.error(err);
+      console.error("Erreur lors de la récupération des trajets:", err);
     } finally {
       setLoading(false);
     }
@@ -23,8 +23,11 @@ export const TripProvider = ({ children }) => {
     try {
       const res = await api.post("/trips", tripData);
       setTrips((prev) => [...prev, res.data]);
+      return { success: true, data: res.data };
     } catch (err) {
-      console.error(err);
+      console.error("Erreur lors de la création du trajet:", err);
+      const errorMessage = err.response?.data?.message || "Erreur lors de la création du trajet";
+      return { success: false, error: errorMessage };
     }
   };
 

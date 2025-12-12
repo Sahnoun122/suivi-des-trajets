@@ -10,7 +10,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import AdminLayout from "./components/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import Drivers from "./pages/admin/Drivers";
-
+import Trucks from "./pages/admin/Trucks";
 function App() {
   return (
     <BrowserRouter>
@@ -37,8 +37,8 @@ function App() {
         >
           <Route index element={<AdminDashboard />} />
           <Route path="drivers" element={<Drivers />} />
-          {/* <Route path="trucks" element={<Trucks />} />
-          <Route path="remorques" element={<Remorques />} />
+          <Route path="trucks" element={<Trucks />} />
+          {/* <Route path="remorques" element={<Remorques />} />
           <Route path="trips" element={<Trips />} />
           <Route path="maintenance" element={<Maintenance />} /> */}
         </Route>

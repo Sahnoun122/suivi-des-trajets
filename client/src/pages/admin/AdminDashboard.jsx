@@ -30,6 +30,8 @@ export default function AdminDashboard() {
         <Card title="Drivers" value={stats.drivers} color="bg-blue-500" />
         <Card title="Camions" value={stats.trucks} color="bg-green-500" />
         <Card title="Remorques" value={stats.remorques} color="bg-yellow-500" />
+        <Card title="Pneu" value={stats.pneu} color="bg-yellow-500" />
+
         <Card title="Trajets" value={stats.trips} color="bg-red-500" />
         <Card
           title="Maintenance"

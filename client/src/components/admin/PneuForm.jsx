@@ -1,9 +1,13 @@
 // src/components/pneus/PneuForm.jsx
 import React, { useState, useContext, useEffect } from "react";
 import { PneuContext } from "../../context/PneuContext";
+import { TruckContext } from "../../context/TruckContext";
+import { RemorqueContext } from "../../context/RemorqueContext";
 
 function PneuForm({ closeForm, editData, setEditData }) {
   const { createPneu, updatePneu } = useContext(PneuContext);
+  const { trucks } = useContext(TruckContext);
+  const { remorques } = useContext(RemorqueContext);
 
   const [formData, setFormData] = useState({
     numeroSerie: "",
@@ -11,7 +15,7 @@ function PneuForm({ closeForm, editData, setEditData }) {
     type: "",
     kilometrage: 0,
     statut: "bon",
-    monteSurType: "Camion",
+    monteSurType: "Truck",
     materielId: "",
   });
 
@@ -29,8 +33,15 @@ function PneuForm({ closeForm, editData, setEditData }) {
     }
   }, [editData]);
 
-  const handleChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    if (name === "monteSurType") {
+      // Réinitialiser materielId quand on change le type
+      setFormData({ ...formData, [name]: value, materielId: "" });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -59,7 +70,7 @@ function PneuForm({ closeForm, editData, setEditData }) {
         type: "",
         kilometrage: 0,
         statut: "bon",
-        monteSurType: "Camion",
+        monteSurType: "Truck",
         materielId: "",
       });
       closeForm();
@@ -131,19 +142,29 @@ function PneuForm({ closeForm, editData, setEditData }) {
           onChange={handleChange}
           className="w-full border border-gray-300 rounded-md p-2"
         >
-          <option value="Camion">Camion</option>
+          <option value="Truck">Truck</option>
           <option value="Remorque">Remorque</option>
         </select>
 
-        <input
-          className="w-full border border-gray-300 rounded-md p-2"
-          type="text"
+        <select
           name="materielId"
-          placeholder="ID du matériel"
           value={formData.materielId}
           onChange={handleChange}
+          className="w-full border border-gray-300 rounded-md p-2"
           required
-        />
+        >
+          <option value="">Sélectionner un véhicule</option>
+          {formData.monteSurType === "Truck" && trucks.map(truck => (
+            <option key={truck._id} value={truck._id}>
+              {truck.matricule} - {truck.marque} {truck.modele}
+            </option>
+          ))}
+          {formData.monteSurType === "Remorque" && remorques.map(remorque => (
+            <option key={remorque._id} value={remorque._id}>
+              {remorque.numeroSerie} - {remorque.type}
+            </option>
+          ))}
+        </select>
 
         <div className="flex justify-end gap-2">
           <button

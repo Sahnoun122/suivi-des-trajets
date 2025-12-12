@@ -13,7 +13,7 @@ export function TruckProvider({ children }) {
       const res = await api.get("/trucks");
       setTrucks(res.data);
     } catch (err) {
-      console.error(err);
+      console.error(err.message);
     }
     setLoading(false);
   };
@@ -32,7 +32,7 @@ export function TruckProvider({ children }) {
       const res = await api.put(`/trucks/${id}`, truckData);
       setTrucks((prev) => prev.map((t) => (t._id === id ? res.data : t)));
     } catch (err) {
-      console.error(err);
+      console.error(err.message);
     }
   };
 

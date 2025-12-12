@@ -16,6 +16,7 @@ export const getTrucks = async (req, res, next) => {
       .populate("remorques");
     res.status(200).json(trucks);
   } catch (err) {
+
     next(err);
   }
 };

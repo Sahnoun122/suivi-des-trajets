@@ -11,7 +11,7 @@ export const createPneu = async (req, res, next) => {
 
 export const getPneus = async (req, res, next) => {
   try {
-    const pneus = await Pneu.find().populate("mountedOn.item");
+    const pneus = await Pneu.find().populate("monteSur.materielId");
     res.status(200).json(pneus);
   } catch (err) {
     next(err);

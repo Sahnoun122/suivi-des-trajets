@@ -11,7 +11,7 @@ export const createRemorque = async (req, res, next) => {
 
 export const getRemorques = async (req, res, next) => {
   try {
-    const remorques = await Remorque.find().populate("truck");
+    const remorques = await Remorque.find().populate("camion");
     res.status(200).json(remorques);
   } catch (err) {
     next(err);

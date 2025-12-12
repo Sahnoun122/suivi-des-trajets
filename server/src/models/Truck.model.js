@@ -14,7 +14,7 @@ const truckSchema = new mongoose.Schema(
       default: "actif",
     },
 
-    chauffeur: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    driver: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 
     remorques: [{ type: mongoose.Schema.Types.ObjectId, ref: "Remorque" }],
   },

@@ -14,6 +14,7 @@ import Trucks from "./pages/admin/Trucks";
 import Remorques from "./pages/admin/Remorques";
 // import Trips from "./pages/admin/Trips";
 // import Maintenance from "./pages/admin/Maintenance";
+import Pneus from "./pages/admin/Pneus";
 
 function App() {
   return (
@@ -43,6 +44,8 @@ function App() {
           <Route path="drivers" element={<Drivers />} />
           <Route path="trucks" element={<Trucks />} />
           <Route path="remorques" element={<Remorques />} />
+          <Route path="pneus" element={<Pneus />} />
+
           {/* <Route path="trips" element={<Trips />} /> */}
           {/* <Route path="maintenance" element={<Maintenance />} /> */}
         </Route>

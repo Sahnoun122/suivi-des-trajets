@@ -10,6 +10,8 @@ export default function Navbar() {
     { label: "Chauffeurs", path: "/admin/drivers" },
     { label: "Camions", path: "/admin/trucks" },
     { label: "Remorques", path: "/admin/remorques" },
+    { label: "Pneus", path: "/admin/pneus" },
+
     { label: "Trajets", path: "/admin/trips" },
     { label: "Maintenance", path: "/admin/maintenance" },
   ];

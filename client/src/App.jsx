@@ -9,7 +9,7 @@ import PrivateRoute from "./components/PrivateRoute";
 
 import AdminLayout from "./components/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
-
+import Drivers from "./pages/admin/Drivers";
 
 function App() {
   return (
@@ -36,8 +36,8 @@ function App() {
           }
         >
           <Route index element={<AdminDashboard />} />
-          {/* <Route path="drivers" element={<Drivers />} />
-          <Route path="trucks" element={<Trucks />} />
+          <Route path="drivers" element={<Drivers />} />
+          {/* <Route path="trucks" element={<Trucks />} />
           <Route path="remorques" element={<Remorques />} />
           <Route path="trips" element={<Trips />} />
           <Route path="maintenance" element={<Maintenance />} /> */}

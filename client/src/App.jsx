@@ -15,6 +15,8 @@ import Remorques from "./pages/admin/Remorques";
 // import Trips from "./pages/admin/Trips";
 // import Maintenance from "./pages/admin/Maintenance";
 
+import TripPage from "./pages/admin/TripPage";
+
 import MaintenancePage from "./pages/admin/Maintenance";
 import Pneus from "./pages/admin/Pneus";
 
@@ -48,7 +50,7 @@ function App() {
           <Route path="remorques" element={<Remorques />} />
           <Route path="pneus" element={<Pneus />} />
 
-          {/* <Route path="trips" element={<Trips />} /> */}
+          <Route path="trips" element={<TripPage />} />
           <Route path="maintenance" element={<MaintenancePage />} />
         </Route>
       </Routes>

@@ -6,6 +6,7 @@ import { TruckProvider } from "./context/TruckContext";
 import { RemorqueProvider } from "./context/RemorqueContext";
 import { PneuProvider } from "./context/PneuContext";
 import { MaintenanceProvider } from "./context/MaintenanceContext";
+import { TripProvider } from "./context/TripContext";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -14,7 +15,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <RemorqueProvider>
         <PneuProvider>
           <MaintenanceProvider>
-            <App />
+            <TripProvider>
+              <App />
+            </TripProvider>
           </MaintenanceProvider>
         </PneuProvider>
       </RemorqueProvider>

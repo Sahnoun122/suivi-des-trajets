@@ -3,15 +3,18 @@ import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const { login, user } = useContext(AuthContext);
+  const { login, user, getDashboardRoute } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [form, setForm] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
-    if (user) navigate("/dashboard");
-  }, [user, navigate]);
+    if (user) {
+      const dashboardRoute = getDashboardRoute(user.role);
+      navigate(dashboardRoute);
+    }
+  }, [user, navigate, getDashboardRoute]);
 
   const gere = (e) => {
     const { name, value } = e.target;
@@ -43,7 +46,9 @@ export default function Login() {
     if (!validate()) return;
 
     try {
-      await login(form);
+      const userData = await login(form);
+      const dashboardRoute = getDashboardRoute(userData.role);
+      navigate(dashboardRoute);
     } catch (error) {
       alert("Erreur: " + (error.response?.data?.message || error.message));
     }

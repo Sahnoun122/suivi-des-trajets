@@ -21,6 +21,7 @@ export function AuthProvider({ children }) {
     localStorage.setItem("token", res.data.token);
     localStorage.setItem("user", JSON.stringify(res.data.user));
     setUser(res.data.user);
+    return res.data.user; // Return user data with role for redirection
   };
 
   const register = async (data) => {
@@ -28,6 +29,18 @@ export function AuthProvider({ children }) {
     localStorage.setItem("token", res.data.token);
     localStorage.setItem("user", JSON.stringify(res.data.user));
     setUser(res.data.user);
+    return res.data.user; // Return user data with role for redirection
+  };
+
+  const getDashboardRoute = (userRole) => {
+    switch (userRole) {
+      case "admin":
+        return "/admin";
+      case "driver":
+        return "/driver";
+      default:
+        return "/dashboard";
+    }
   };
 
   const logout = () => {
@@ -39,7 +52,7 @@ export function AuthProvider({ children }) {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <AuthContext.Provider value={{ user, login, register, logout }}>
+    <AuthContext.Provider value={{ user, login, register, logout, getDashboardRoute }}>
       {children}
     </AuthContext.Provider>
   );

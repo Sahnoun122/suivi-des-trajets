@@ -3,7 +3,7 @@ import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 export default function Register() {
-  const { register } = useContext(AuthContext);
+  const { register, getDashboardRoute } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [errors, setErrors] = useState({});
@@ -45,9 +45,14 @@ export default function Register() {
 
     if (!validate()) return;
 
-    await register(form);
-    alert("Connexion avec succès");
-    navigate("/dashboard");
+    try {
+      const userData = await register(form);
+      alert("Inscription avec succès");
+      const dashboardRoute = getDashboardRoute(userData.role);
+      navigate(dashboardRoute);
+    } catch (error) {
+      alert("Erreur: " + (error.response?.data?.message || error.message));
+    }
   };
 
   return (

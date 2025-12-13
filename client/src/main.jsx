@@ -10,6 +10,7 @@ import { TripProvider } from "./context/TripContext";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
+  
   <AuthProvider>
     <TruckProvider>
       <RemorqueProvider>
@@ -23,4 +24,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       </RemorqueProvider>
     </TruckProvider>
   </AuthProvider>
+
+
 );

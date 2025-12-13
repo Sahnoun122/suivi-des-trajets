@@ -5,8 +5,9 @@ import PDFDocument from "pdfkit";
 export const getMyTrips = async (req, res, next) => {
   try {
     const trips = await Trip.find({ chauffeurId: req.user.id })
-      .populate("camionId")
-      .populate("remorqueId");
+      .populate("camionId", "matricule marque modele")
+      .populate("remorqueId", "matricule type")
+      .populate("chauffeurId", "name email");
 
     res.status(200).json(trips);
   } catch (err) {

@@ -8,6 +8,7 @@ import { PneuProvider } from "./context/PneuContext";
 import { MaintenanceProvider } from "./context/MaintenanceContext";
 import { TripProvider } from "./context/TripContext";
 import { DriverProvider } from "./context/DriverContext";
+import { FuelLogProvider } from "./context/FuelLogContext";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -18,7 +19,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <MaintenanceProvider>
             <TripProvider>
               <DriverProvider>
-                <App />
+                <FuelLogProvider>
+                  <App />
+                </FuelLogProvider>
               </DriverProvider>
             </TripProvider>
           </MaintenanceProvider>

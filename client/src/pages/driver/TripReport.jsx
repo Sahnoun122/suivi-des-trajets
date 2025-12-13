@@ -1,85 +1,52 @@
-import { useDriver } from "../../context/DriverContext";
+import { useFuelLog } from "../../context/FuelLogContext";
 import { useState } from "react";
+import FuelLogForm from "../../components/driver/FuelLogForm";
 
-export default function TripReport() {
-  const { trips, updateTripDetails } = useDriver();
-  const [form, setForm] = useState({
-    tripId: "",
-    odometreDebut: "",
-    odometreFin: "",
-    carburantDepart: "",
-    carburantFin: "",
-    remarques: "",
-  });
+export default function FuelLogsPage() {
+  const { logs, loading } = useFuelLog();
+  const [showForm, setShowForm] = useState(false);
 
-  const availableTrips = trips.filter((t) => t.statut !== "termine");
+  if (loading) return <p>Chargement...</p>;
 
-  const handleChange = (e) =>
-    setForm({ ...form, [e.target.name]: e.target.value });
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    updateTripDetails(form.tripId, form);
-    alert("Données enregistrées ✅");
-  };
-
-  return (
-    <div className="bg-white p-8 rounded-xl shadow max-w-3xl">
-      <h1 className="text-2xl font-bold mb-6">Saisie véhicule</h1>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="block mb-1 font-medium">Trajet</label>
-          <select
-            name="tripId"
-            value={form.tripId}
-            onChange={handleChange}
-            className="w-full border p-3 rounded-lg"
-          >
-            <option value="">Sélectionner un trajet</option>
-            {availableTrips.map((t) => (
-              <option key={t._id} value={t._id}>
-                {t.origine} → {t.destination}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <Input label="KM départ" name="odometreDebut" onChange={handleChange} />
-        <Input label="KM arrivée" name="odometreFin" onChange={handleChange} />
-        <Input
-          label="Gasoil départ (L)"
-          name="carburantDepart"
-          onChange={handleChange}
-        />
-        <Input
-          label="Gasoil arrivée (L)"
-          name="carburantFin"
-          onChange={handleChange}
-        />
-
-        <textarea
-          name="remarques"
-          placeholder="Remarques sur l'état du véhicule"
-          className="w-full border rounded-lg p-3"
-          onChange={handleChange}
-        />
-
-        <button className="w-full bg-blue-600 text-white py-3 rounded-lg">
-          Valider le trajet
-        </button>
-      </form>
-    </div>
-  );
-}
-
-function Input({ label, name, onChange }) {
   return (
     <div>
-      <label className="block mb-1 font-medium">{label}</label>
-      <input
-        name={name}
-        onChange={onChange}
-        className="w-full border p-3 rounded-lg"
-      />
+      <h1 className="text-2xl font-bold mb-6">Saisie véhicule / Fuel Logs</h1>
+      <button
+        className="mb-4 px-5 py-2 bg-blue-600 text-white rounded-lg"
+        onClick={() => setShowForm(true)}
+      >
+        Ajouter un nouveau log
+      </button>
+
+      {showForm && <FuelLogForm close={() => setShowForm(false)} />}
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {logs.filter(log => log && log._id).map((log) => (
+          <div key={log._id} className="p-4 bg-white rounded-xl shadow">
+            <p>
+              <strong>Camion ID:</strong>{" "}
+              {log.camionId?.matricule || log.camionId}
+            </p>
+            <p>
+              <strong>Trajet ID:</strong>{" "}
+              {log.trajetId?.reference || log.trajetId}
+            </p>
+            <p>
+              <strong>Litres:</strong> {log.litres}
+            </p>
+            <p>
+              <strong>Coût:</strong> {log.cout}
+            </p>
+            <p>
+              <strong>Odometre:</strong> {log.odometre}
+            </p>
+            <p>
+              <strong>Enregistré par:</strong>{" "}
+              {typeof log.enregistrePar === 'object' ? (log.enregistrePar?.name || "Inconnu") : (log.enregistrePar || "Inconnu")}
+            </p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

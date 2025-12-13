@@ -43,7 +43,7 @@ const TripPage = () => {
 
       <h2 className="text-2xl font-bold mb-4">Liste des Trajets</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {trips.map((t) => (
+        {trips.filter(t => t && t._id).map((t) => (
           <div key={t._id} className="p-4 shadow-md bg-white rounded-xl">
             <h3 className="text-lg font-bold">{t.reference}</h3>
             <p>Origine: {t.origine}</p>
@@ -54,7 +54,7 @@ const TripPage = () => {
                 ? t.pointsIntermediaires.join(", ")
                 : "N/A"}
             </p>
-            <p>Chauffeur: {t.chauffeurId?.name || "Non assigné"}</p>
+            <p>Chauffeur: {typeof t.chauffeurId === 'object' ? (t.chauffeurId?.name || "Non assigné") : (t.chauffeurId || "Non assigné")}</p>
             <p>Camion: {t.camionId?.matricule ? `${t.camionId.matricule} - ${t.camionId.marque} ${t.camionId.modele || ''}` : "Non assigné"}</p>
             <p>Remorque: {t.remorqueId?.matricule ? `${t.remorqueId.matricule} - ${t.remorqueId.type}` : "Non assignée"}</p>
             <p>Statut: {t.statut}</p>

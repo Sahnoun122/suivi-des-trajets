@@ -91,7 +91,7 @@ export default function CurrentTrip() {
     <div className="max-w-6xl mx-auto space-y-6">
       <h1 className="text-3xl font-bold mb-6">Mes Trajets</h1>
       
-      {trips.map((trip) => (
+      {trips.filter(trip => trip && trip._id).map((trip) => (
         <div key={trip._id} className="bg-white p-6 rounded-xl shadow">
           <div className="flex justify-between items-start mb-4">
             <div>
@@ -100,8 +100,8 @@ export default function CurrentTrip() {
                 <span className="font-semibold">Route:</span> {trip.origine} → {trip.destination}
               </p>
             </div>
-            <span className={`px-3 py-1 rounded-full text-sm font-semibold ${getStatusColor(trip.statut)}`}>
-              {getStatusLabel(trip.statut)}
+            <span className={`px-3 py-1 rounded-full text-sm font-semibold ${getStatusColor(trip.statut || 'planifie')}`}>
+              {getStatusLabel(trip.statut || 'planifie')}
             </span>
           </div>
 
@@ -210,7 +210,7 @@ export default function CurrentTrip() {
             </div>
           ) : (
             <div className="flex flex-wrap gap-3 pt-4 border-t">
-              {getAvailableActions(trip.statut).map((action) => (
+              {getAvailableActions(trip.statut || 'planifie').map((action) => (
                 <button
                   key={action.action}
                   onClick={() => handleStatusChange(trip._id, action.action)}
@@ -220,7 +220,7 @@ export default function CurrentTrip() {
                 </button>
               ))}
               
-              {trip.statut !== "termine" && (
+              {(trip.statut || 'planifie') !== "termine" && (
                 <button
                   onClick={() => startEdit(trip)}
                   className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium"

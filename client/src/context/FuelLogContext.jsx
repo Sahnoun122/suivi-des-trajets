@@ -22,9 +22,13 @@ export const FuelLogProvider = ({ children }) => {
   const createLog = async (data) => {
     try {
       const res = await api.post("/fuelLogs", data);
-      setLogs([res.data, ...logs]);
+      // Refresh the logs list to get updated data
+      await fetchLogs();
+      return { success: true, data: res.data };
     } catch (err) {
-      console.error(err);
+      console.error("Erreur lors de la création du log:", err);
+      const errorMessage = err.response?.data?.message || "Erreur lors de l'enregistrement";
+      return { success: false, error: errorMessage };
     }
   };
 

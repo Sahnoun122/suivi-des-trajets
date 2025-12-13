@@ -7,7 +7,7 @@ const userShema = new mongoose.Schema({
   role: { type: String, enum: ["admin", "driver"], default: "driver" },
   password: { type: String, required: true },
   licenseNumber: { type: String },
-  status : {type : String , enum : ["active" , "inactive"]},
+  status : {type : String , enum : ["active" , "inactive"], default: "active"},
   createdAt : {type : Date , default : Date.now}
 });
 

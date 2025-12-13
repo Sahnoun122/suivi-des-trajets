@@ -39,7 +39,10 @@ export const MaintenanceProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchMaintenances();
+    const token = localStorage.getItem("token");
+    if (token) {
+      fetchMaintenances();
+    }
   }, []);
 
   return (

@@ -33,7 +33,10 @@ export const FuelLogProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchLogs();
+    const token = localStorage.getItem("token");
+    if (token) {
+      fetchLogs();
+    }
   }, []);
 
   return (

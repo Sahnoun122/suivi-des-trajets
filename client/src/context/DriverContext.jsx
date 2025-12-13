@@ -54,7 +54,10 @@ export const DriverProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchTrips();
+    const token = localStorage.getItem("token");
+    if (token) {
+      fetchTrips();
+    }
   }, []);
 
   return (

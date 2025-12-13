@@ -6,7 +6,6 @@ const MaintenancePage = () => {
   const { maintenances, fetchMaintenances } = useMaintenance();
   const [editMaintenance, setEditMaintenance] = useState(null);
   const [openForm, setOpenForm] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
 
   const handleEdit = (m) => {
@@ -38,20 +37,15 @@ const MaintenancePage = () => {
   };
 
   const filteredMaintenances = maintenances.filter(m => {
-    const matchesSearch = m.type?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         m.camionId?.matricule?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         m.effectuePar?.name?.toLowerCase().includes(searchTerm.toLowerCase());
-    
     const matchesStatus = statusFilter === "all" || 
                          (statusFilter === "effectue" && m.effectueLe) ||
                          (statusFilter === "programme" && !m.effectueLe);
     
-    return matchesSearch && matchesStatus;
+    return matchesStatus;
   });
 
   return (
     <div className="p-6">
-      {/* Header */}
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Gestion des Maintenances</h1>
@@ -68,24 +62,7 @@ const MaintenancePage = () => {
         </button>
       </div>
 
-      {/* Filters */}
-      <div className="flex flex-col sm:flex-row gap-4 mb-6">
-        <div className="flex-1">
-          <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
-            <input
-              type="text"
-              placeholder="Rechercher par type, camion ou responsable..."
-              className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
-        </div>
+      <div className="flex justify-end mb-6">
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
@@ -108,11 +85,10 @@ const MaintenancePage = () => {
         </div>
       )}
 
-      {/* Maintenances Grid */}
+
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         {filteredMaintenances.map((m) => (
           <div key={m._id} className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow">
-            {/* Card Header */}
             <div className="bg-gray-50 px-6 py-4 border-b border-gray-200">
               <div className="flex justify-between items-start">
                 <div>

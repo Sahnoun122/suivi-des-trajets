@@ -26,20 +26,21 @@ export const register = async(req , res)=>{
             password: hashPassword
         });
 
-        if(user.status !== 'active'){
-            return res.status(403).json({
-                message: "Votre compte a été créé mais n'est pas encore activé. Contactez l'administrateur pour l'activation.",
-                user: {
-                    id: user._id,
-                    name: user.name,
-                    email: user.email,
-                    phone: user.phone,
-                    role: user.role,
-                    licenseNumber: user.licenseNumber,
-                    status: user.status,
-                }
-            });
-        }
+        // Vérification du statut désactivée temporairement
+        // if(user.status && user.status !== 'active'){
+        //     return res.status(403).json({
+        //         message: "Votre compte a été créé mais n'est pas encore activé. Contactez l'administrateur pour l'activation.",
+        //         user: {
+        //             id: user._id,
+        //             name: user.name,
+        //             email: user.email,
+        //             phone: user.phone,
+        //             role: user.role,
+        //             licenseNumber: user.licenseNumber,
+        //             status: user.status,
+        //         }
+        //     });
+        // }
 
         const token = generateToken({id:user._id , name : user.name , email : user.email,
             phone : user.phone , role : user.role , licenseNumber: user.licenseNumber , status : user.status , 
@@ -76,9 +77,10 @@ export const login = async(req , res)=>{
             return res.status(401).json({message : "email ou mot de passe incorecte"})
         }
 
-        if(user.status !== 'active'){
-            return res.status(403).json({message : "Votre compte n'est pas activé. Contactez l'administrateur."})
-        }
+        // Vérification du statut désactivée temporairement
+        // if(user.status && user.status !== 'active'){
+        //     return res.status(403).json({message : "Votre compte n'est pas activé. Contactez l'administrateur."})
+        // }
 
         const passwordVerfie = await bcrypt.compare(password , user.password);
 

@@ -46,7 +46,12 @@ export function TruckProvider({ children }) {
   };
 
   useEffect(() => {
-    loadTrucks();
+    const token = localStorage.getItem("token");
+    if (token) {
+      loadTrucks();
+    } else {
+      setLoading(false);
+    }
   }, []);
 
   if (loading) return <div>Chargement...</div>;

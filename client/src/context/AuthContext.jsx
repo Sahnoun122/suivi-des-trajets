@@ -21,6 +21,8 @@ export function AuthProvider({ children }) {
     localStorage.setItem("token", res.data.token);
     localStorage.setItem("user", JSON.stringify(res.data.user));
     setUser(res.data.user);
+    // Rafraîchir la page pour recharger tous les contexts avec le nouveau token
+    window.location.reload();
     return res.data.user; // Return user data with role for redirection
   };
 

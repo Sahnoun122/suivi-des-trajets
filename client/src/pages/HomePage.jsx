@@ -7,7 +7,6 @@ export default function HomePage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Si l'utilisateur est déjà connecté, le rediriger vers son dashboard
     if (user) {
       const dashboardRoute = getDashboardRoute(user.role);
       navigate(dashboardRoute);

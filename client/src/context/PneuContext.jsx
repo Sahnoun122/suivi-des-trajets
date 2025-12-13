@@ -36,7 +36,12 @@ export function PneuProvider({ children }) {
   };
 
   useEffect(() => {
-    fetchPneus();
+    const token = localStorage.getItem("token");
+    if (token) {
+      fetchPneus();
+    } else {
+      setLoading(false);
+    }
   }, []);
 
   if (loading) return <div>Loading pneus...</div>;

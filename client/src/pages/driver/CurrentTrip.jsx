@@ -63,17 +63,14 @@ export default function CurrentTrip() {
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-6xl mx-auto">
-        {/* En-tête */}
         <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Trajet en Cours</h1>
           <p className="text-gray-600">Gérez vos trajets actifs et mettez à jour les informations</p>
         </div>
 
-        {/* Liste des trajets - Grid 3 colonnes */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {trips.filter(trip => trip && trip._id).map((trip) => (
             <div key={trip._id} className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 hover:shadow-md transition-shadow h-fit">
-              {/* En-tête compacte */}
               <div className="flex justify-between items-start mb-4">
                 <div className="flex items-center space-x-3 min-w-0 flex-1">
                   <div className="w-10 h-10 bg-gray-900 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -93,7 +90,6 @@ export default function CurrentTrip() {
                 </span>
               </div>
 
-              {/* Données du trajet - Stack vertical pour optimiser l'espace */}
               <div className="space-y-2 mb-4">
                 <div className="grid grid-cols-2 gap-2">
                   <div className="bg-gray-50 rounded-lg p-2">

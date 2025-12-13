@@ -49,7 +49,12 @@ export function RemorqueProvider({ children }) {
   };
 
   useEffect(() => {
-    fetchRemorques().finally(() => setLoading(false));
+    const token = localStorage.getItem("token");
+    if (token) {
+      fetchRemorques().finally(() => setLoading(false));
+    } else {
+      setLoading(false);
+    }
   }, []);
 
   if (loading) return <div>Loading remorques...</div>;

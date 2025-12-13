@@ -7,23 +7,23 @@ import { RemorqueProvider } from "./context/RemorqueContext";
 import { PneuProvider } from "./context/PneuContext";
 import { MaintenanceProvider } from "./context/MaintenanceContext";
 import { TripProvider } from "./context/TripContext";
+import { DriverProvider } from "./context/DriverContext";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  
   <AuthProvider>
     <TruckProvider>
       <RemorqueProvider>
         <PneuProvider>
           <MaintenanceProvider>
             <TripProvider>
-              <App />
+              <DriverProvider>
+                <App />
+              </DriverProvider>
             </TripProvider>
           </MaintenanceProvider>
         </PneuProvider>
       </RemorqueProvider>
     </TruckProvider>
   </AuthProvider>
-
-
 );

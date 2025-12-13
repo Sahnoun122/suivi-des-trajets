@@ -22,8 +22,7 @@ export default function DriverNavbar() {
             key={item.path}
             to={item.path}
             className={({ isActive }) =>
-              `block px-4 py-3 rounded mb-2 font-medium transition
-              ${
+              `block px-4 py-3 rounded mb-2 font-medium transition ${
                 isActive
                   ? "bg-blue-600 text-white"
                   : "text-gray-700 hover:bg-gray-100"

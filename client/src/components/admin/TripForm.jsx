@@ -28,6 +28,7 @@ const TripForm = ({ editData = null, onClose }) => {
     odometreFin: "",
     carburantDepart: "",
     carburantFin: "",
+    remarques: "",
   });
 
   // Récupérer la liste des chauffeurs
@@ -58,6 +59,7 @@ const TripForm = ({ editData = null, onClose }) => {
         odometreFin: editData.odometreFin || "",
         carburantDepart: editData.carburantDepart || "",
         carburantFin: editData.carburantFin || "",
+        remarques: editData.remarques || "",
       });
     }
   }, [editData]);
@@ -81,6 +83,7 @@ const TripForm = ({ editData = null, onClose }) => {
     
     const payload = {
       ...form,
+      remorqueId: form.remorqueId || null, // Convert empty string to null
       pointsIntermediaires: form.pointsIntermediaires
         .split(",")
         .map((p) => p.trim()),
@@ -93,7 +96,7 @@ const TripForm = ({ editData = null, onClose }) => {
         if (result?.success || !result?.error) {
           onClose && onClose();
         } else {
-          setError(result.error);
+          setError(result.error || "Erreur lors de la mise à jour");
         }
       } else {
         const result = await createTrip(payload);
@@ -111,6 +114,7 @@ const TripForm = ({ editData = null, onClose }) => {
             odometreFin: "",
             carburantDepart: "",
             carburantFin: "",
+            remarques: "",
           });
         } else {
           setError(result.error);
@@ -266,6 +270,18 @@ const TripForm = ({ editData = null, onClose }) => {
             value={form.carburantFin}
             onChange={handleChange}
             className="w-full p-2 border border-gray-300 rounded-md"
+          />
+        </div>
+
+        {/* Champ remarques sur toute la largeur */}
+        <div className="mt-4">
+          <textarea
+            name="remarques"
+            placeholder="Remarques ou commentaires additionnels..."
+            value={form.remarques}
+            onChange={handleChange}
+            rows="3"
+            className="w-full p-2 border border-gray-300 rounded-md resize-vertical"
           />
         </div>
 

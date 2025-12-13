@@ -62,6 +62,9 @@ const TripPage = () => {
             <p>Odomètre fin: {t.odometreFin || "N/A"}</p>
             <p>Carburant départ: {t.carburantDepart || "N/A"}</p>
             <p>Carburant fin: {t.carburantFin || "N/A"}</p>
+            {t.remarques && (
+              <p>Remarques: {t.remarques}</p>
+            )}
 
             <div className="mt-2 flex gap-2">
               <button

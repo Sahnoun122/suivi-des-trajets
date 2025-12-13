@@ -32,6 +32,8 @@ const tripSchema = new mongoose.Schema(
     carburantDepart: Number,
     carburantFin: Number,
 
+    remarques: { type: String }, // Commentaires additionnels
+
     creePar: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

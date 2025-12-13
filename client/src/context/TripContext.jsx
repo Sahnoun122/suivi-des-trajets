@@ -22,7 +22,7 @@ export const TripProvider = ({ children }) => {
   const createTrip = async (tripData) => {
     try {
       const res = await api.post("/trips", tripData);
-      setTrips((prev) => [...prev, res.data]);
+      await fetchTrips();
       return { success: true, data: res.data };
     } catch (err) {
       console.error("Erreur lors de la création du trajet:", err);
@@ -34,11 +34,12 @@ export const TripProvider = ({ children }) => {
   const updateTrip = async (id, tripData) => {
     try {
       const res = await api.put(`/trips/${id}`, tripData);
-      setTrips((prev) =>
-        prev.map((trip) => (trip._id === id ? res.data : trip))
-      );
+      await fetchTrips();
+      return { success: true, data: res.data };
     } catch (err) {
-      console.error(err);
+      console.error("Erreur lors de la mise à jour du trajet:", err);
+      const errorMessage = err.response?.data?.message || "Erreur lors de la mise à jour du trajet";
+      return { success: false, error: errorMessage };
     }
   };
 

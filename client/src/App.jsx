@@ -23,9 +23,7 @@ import DriverDashboard from "./pages/driver/DriverDashboard";
 import DriverTrips from "./pages/driver/DriverTrips";
 import CurrentTrip from "./pages/driver/CurrentTrip";
 import TripReport from "./pages/driver/TripReport";
-import DriverOrders from "./pages/driver/DriverOrders";
 
-// Layout pour driver
 function DriverPage({ children }) {
   return (
     <div className="flex min-h-screen bg-gray-100">
@@ -110,16 +108,7 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route
-          path="/driver/order"
-          element={
-            <PrivateRoute role="driver">
-              <DriverPage>
-                <DriverOrders />
-              </DriverPage>
-            </PrivateRoute>
-          }
-        />
+     
       </Routes>
     </BrowserRouter>
   );

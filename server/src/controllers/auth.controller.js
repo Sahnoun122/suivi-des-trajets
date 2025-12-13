@@ -26,6 +26,21 @@ export const register = async(req , res)=>{
             password: hashPassword
         });
 
+        if(user.status !== 'active'){
+            return res.status(403).json({
+                message: "Votre compte a été créé mais n'est pas encore activé. Contactez l'administrateur pour l'activation.",
+                user: {
+                    id: user._id,
+                    name: user.name,
+                    email: user.email,
+                    phone: user.phone,
+                    role: user.role,
+                    licenseNumber: user.licenseNumber,
+                    status: user.status,
+                }
+            });
+        }
+
         const token = generateToken({id:user._id , name : user.name , email : user.email,
             phone : user.phone , role : user.role , licenseNumber: user.licenseNumber , status : user.status , 
         });
@@ -61,6 +76,10 @@ export const login = async(req , res)=>{
             return res.status(401).json({message : "email ou mot de passe incorecte"})
         }
 
+        if(user.status !== 'active'){
+            return res.status(403).json({message : "Votre compte n'est pas activé. Contactez l'administrateur."})
+        }
+
         const passwordVerfie = await bcrypt.compare(password , user.password);
 
         if(!passwordVerfie){
@@ -71,7 +90,8 @@ export const login = async(req , res)=>{
         id: user._id,
         name: user.name,
         email: user.email,
-        role: user.role
+        role: user.role,
+        status: user.status
        });
        res.status(200).json({
          message: "connexion reussie",
@@ -81,6 +101,7 @@ export const login = async(req , res)=>{
            name: user.name,
            email: user.email,
            role: user.role,
+           status: user.status,
          },
        });
 

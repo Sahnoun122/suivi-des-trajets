@@ -20,6 +20,11 @@ export const authenticateToken = async (req, res, next) => {
       return res.status(404).json({ message: "Utilisateur introuvable" });
     }
 
+    // Vérifier si l'utilisateur a le statut 'active'
+    if (user.status !== 'active') {
+      return res.status(403).json({ message: "Votre compte n'est pas activé. Contactez l'administrateur." });
+    }
+
     req.user = user; 
     next();
   } catch (err) {

@@ -14,7 +14,6 @@ export default function Register() {
     phone: "",
     password: "",
     licenseNumber: "",
-    role: "driver",
     status: "inactive",
   });
 
@@ -44,7 +43,7 @@ export default function Register() {
     if (!validate()) return;
 
     try {
-      const userData = await register(form);
+      const userData = await register({...form, role: "driver"});
       alert("Inscription avec succès");
       const dashboardRoute = getDashboardRoute(userData.role);
       navigate(dashboardRoute);
@@ -172,19 +171,6 @@ export default function Register() {
                 {errors.licenseNumber}
               </p>
             )}
-          </div>
-
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">Rôle</label>
-            <select
-              name="role"
-              value={form.role}
-              onChange={gere}
-              className="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all duration-200 bg-gray-50"
-            >
-              <option value="driver">Conducteur</option>
-              <option value="admin">Administrateur</option>
-            </select>
           </div>
 
           <button

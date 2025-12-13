@@ -14,14 +14,14 @@ export default function HomePage() {
     }
   }, [user, navigate, getDashboardRoute]);
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Header */}
-      <header className="bg-white shadow-sm">
+      <header className="bg-white shadow-lg border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
             <div className="flex items-center">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-gray-900 rounded-lg flex items-center justify-center">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
@@ -32,13 +32,13 @@ export default function HomePage() {
             <div className="flex space-x-4">
               <Link
                 to="/login"
-                className="px-4 py-2 text-blue-600 hover:text-blue-700 font-medium transition-colors"
+                className="px-4 py-2 text-gray-700 hover:text-gray-900 font-medium transition-colors border border-gray-300 rounded-lg hover:border-gray-400"
               >
                 Connexion
               </Link>
               <Link
                 to="/register"
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors font-medium shadow-lg"
               >
                 S'inscrire
               </Link>
@@ -52,7 +52,7 @@ export default function HomePage() {
         <div className="py-20 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-8">
             Gestion Intelligente de
-            <span className="text-blue-600 block">Vos Trajets</span>
+            <span className="text-gray-700 block">Vos Trajets</span>
           </h1>
           
           <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
@@ -63,13 +63,13 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/register"
-              className="px-8 py-4 bg-blue-600 text-white text-lg font-semibold rounded-xl hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
+              className="px-8 py-4 bg-gray-900 text-white text-lg font-semibold rounded-xl hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 shadow-xl"
             >
               Commencer Gratuitement
             </Link>
             <Link
               to="/login"
-              className="px-8 py-4 bg-white text-gray-900 text-lg font-semibold rounded-xl hover:bg-gray-50 transition-all duration-300 border-2 border-gray-200 hover:border-gray-300"
+              className="px-8 py-4 bg-white text-gray-900 text-lg font-semibold rounded-xl hover:bg-gray-50 transition-all duration-300 border-2 border-gray-300 hover:border-gray-400 shadow-lg"
             >
               Se Connecter
             </Link>
@@ -89,9 +89,9 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {/* Feature 1 */}
-            <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
-                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100">
+              <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mb-6">
+                <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-1.447-.894L15 4m0 13V4m-6 3v10" />
                 </svg>
               </div>
@@ -102,9 +102,9 @@ export default function HomePage() {
             </div>
 
             {/* Feature 2 */}
-            <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6">
-                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100">
+              <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center mb-6">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
               </div>
@@ -115,9 +115,9 @@ export default function HomePage() {
             </div>
 
             {/* Feature 3 */}
-            <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
-                <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100">
+              <div className="w-12 h-12 bg-gray-600 rounded-lg flex items-center justify-center mb-6">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </div>
@@ -130,7 +130,7 @@ export default function HomePage() {
         </div>
 
         {/* CTA Section */}
-        <div className="py-20 text-center bg-white rounded-3xl shadow-lg mx-4">
+        <div className="py-20 text-center bg-white rounded-3xl shadow-2xl mx-4 border border-gray-100">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
             Prêt à optimiser vos transports ?
           </h2>
@@ -140,13 +140,13 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/register"
-              className="px-8 py-4 bg-blue-600 text-white text-lg font-semibold rounded-xl hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
+              className="px-8 py-4 bg-gray-900 text-white text-lg font-semibold rounded-xl hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 shadow-xl"
             >
               Créer un Compte
             </Link>
             <Link
               to="/login"
-              className="px-8 py-4 bg-gray-100 text-gray-900 text-lg font-semibold rounded-xl hover:bg-gray-200 transition-all duration-300"
+              className="px-8 py-4 bg-gray-100 text-gray-900 text-lg font-semibold rounded-xl hover:bg-gray-200 transition-all duration-300 border border-gray-300"
             >
               J'ai déjà un compte
             </Link>
@@ -155,18 +155,18 @@ export default function HomePage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-white mt-20 border-t">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <footer className="bg-gray-900 mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-3 mb-4 md:mb-0">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+                <svg className="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <span className="text-xl font-bold text-gray-900">TruckFlow</span>
+              <span className="text-xl font-bold text-white">TruckFlow</span>
             </div>
-            <p className="text-gray-600 text-center md:text-right">
+            <p className="text-gray-400 text-center md:text-right">
               © 2025 TruckFlow. Tous droits réservés.
             </p>
           </div>

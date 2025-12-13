@@ -124,13 +124,23 @@ const TripForm = ({ editData = null, onClose }) => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="p-4 bg-white shadow-md rounded-xl mb-6"
-    >
-      <h2 className="text-xl font-bold mb-4">
-        {editData ? "Modifier Trajet" : "Nouveau Trajet"}
-      </h2>
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white p-6 rounded-lg shadow-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto"
+      >
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-xl font-bold">
+            {editData ? "Modifier Trajet" : "Nouveau Trajet"}
+          </h2>
+          <button
+            type="button"
+            onClick={onClose}
+            className="text-gray-500 hover:text-gray-700 text-2xl"
+          >
+            ×
+          </button>
+        </div>
 
       {error && (
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
@@ -138,131 +148,151 @@ const TripForm = ({ editData = null, onClose }) => {
         </div>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input
-          type="text"
-          name="reference"
-          placeholder="Référence"
-          value={form.reference}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="origine"
-          placeholder="Origine"
-          value={form.origine}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="destination"
-          placeholder="Destination"
-          value={form.destination}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="pointsIntermediaires"
-          placeholder="Points intermédiaires (séparés par ,)"
-          value={form.pointsIntermediaires}
-          onChange={handleChange}
-        />
-        
-        <select
-          name="chauffeurId"
-          value={form.chauffeurId}
-          onChange={handleChange}
-          required
-          className="p-2 border rounded"
-        >
-          <option value="">Sélectionner un chauffeur</option>
-          {drivers.map((driver) => (
-            <option key={driver._id} value={driver._id}>
-              {driver.name || driver.nom || driver.email}
-            </option>
-          ))}
-        </select>
-        
-        <select
-          name="camionId"
-          value={form.camionId}
-          onChange={handleChange}
-          required
-          className="p-2 border rounded"
-        >
-          <option value="">Sélectionner un camion</option>
-          {trucks?.map((truck) => (
-            <option key={truck._id} value={truck._id}>
-              {truck.matricule} - {truck.marque} {truck.model}
-            </option>
-          ))}
-        </select>
-        
-        <select
-          name="remorqueId"
-          value={form.remorqueId}
-          onChange={handleChange}
-          className="p-2 border rounded"
-        >
-          <option value="">Sélectionner une remorque (optionnel)</option>
-          {remorques?.map((remorque) => (
-            <option key={remorque._id} value={remorque._id}>
-              {remorque.matricule || remorque.numeroSerie} - {remorque.type}
-            </option>
-          ))}
-        </select>
-        <select name="statut" value={form.statut} onChange={handleChange}>
-          <option value="planifie">Planifié</option>
-          <option value="en_cours">En cours</option>
-          <option value="termine">Terminé</option>
-        </select>
-        <input
-          type="number"
-          name="odometreDebut"
-          placeholder="Odomètre début"
-          value={form.odometreDebut}
-          onChange={handleChange}
-        />
-        <input
-          type="number"
-          name="odometreFin"
-          placeholder="Odomètre fin"
-          value={form.odometreFin}
-          onChange={handleChange}
-        />
-        <input
-          type="number"
-          name="carburantDepart"
-          placeholder="Carburant départ"
-          value={form.carburantDepart}
-          onChange={handleChange}
-        />
-        <input
-          type="number"
-          name="carburantFin"
-          placeholder="Carburant fin"
-          value={form.carburantFin}
-          onChange={handleChange}
-        />
-      </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input
+            type="text"
+            name="reference"
+            placeholder="Référence"
+            value={form.reference}
+            onChange={handleChange}
+            required
+            className="w-full p-2 border border-gray-300 rounded-md"
+          />
+          <input
+            type="text"
+            name="origine"
+            placeholder="Origine"
+            value={form.origine}
+            onChange={handleChange}
+            required
+            className="w-full p-2 border border-gray-300 rounded-md"
+          />
+          <input
+            type="text"
+            name="destination"
+            placeholder="Destination"
+            value={form.destination}
+            onChange={handleChange}
+            required
+            className="w-full p-2 border border-gray-300 rounded-md"
+          />
+          <input
+            type="text"
+            name="pointsIntermediaires"
+            placeholder="Points intermédiaires (séparés par ,)"
+            value={form.pointsIntermediaires}
+            onChange={handleChange}
+            className="w-full p-2 border border-gray-300 rounded-md"
+          />
+          
+          <select
+            name="chauffeurId"
+            value={form.chauffeurId}
+            onChange={handleChange}
+            required
+            className="w-full p-2 border border-gray-300 rounded-md"
+          >
+            <option value="">Sélectionner un chauffeur</option>
+            {drivers.map((driver) => (
+              <option key={driver._id} value={driver._id}>
+                {driver.name || driver.nom || driver.email}
+              </option>
+            ))}
+          </select>
+          
+          <select
+            name="camionId"
+            value={form.camionId}
+            onChange={handleChange}
+            required
+            className="w-full p-2 border border-gray-300 rounded-md"
+          >
+            <option value="">Sélectionner un camion</option>
+            {trucks?.map((truck) => (
+              <option key={truck._id} value={truck._id}>
+                {truck.matricule} - {truck.marque} {truck.model}
+              </option>
+            ))}
+          </select>
+          
+          <select
+            name="remorqueId"
+            value={form.remorqueId}
+            onChange={handleChange}
+            className="w-full p-2 border border-gray-300 rounded-md"
+          >
+            <option value="">Sélectionner une remorque (optionnel)</option>
+            {remorques?.map((remorque) => (
+              <option key={remorque._id} value={remorque._id}>
+                {remorque.matricule || remorque.numeroSerie} - {remorque.type}
+              </option>
+            ))}
+          </select>
+          
+          <select name="statut" value={form.statut} onChange={handleChange} className="w-full p-2 border border-gray-300 rounded-md">
+            <option value="planifie">Planifié</option>
+            <option value="en_cours">En cours</option>
+            <option value="termine">Terminé</option>
+          </select>
+          
+          <input
+            type="number"
+            name="odometreDebut"
+            placeholder="Odomètre début"
+            value={form.odometreDebut}
+            onChange={handleChange}
+            className="w-full p-2 border border-gray-300 rounded-md"
+          />
+          <input
+            type="number"
+            name="odometreFin"
+            placeholder="Odomètre fin"
+            value={form.odometreFin}
+            onChange={handleChange}
+            className="w-full p-2 border border-gray-300 rounded-md"
+          />
+          <input
+            type="number"
+            name="carburantDepart"
+            placeholder="Carburant départ"
+            value={form.carburantDepart}
+            onChange={handleChange}
+            className="w-full p-2 border border-gray-300 rounded-md"
+          />
+          <input
+            type="number"
+            name="carburantFin"
+            placeholder="Carburant fin"
+            value={form.carburantFin}
+            onChange={handleChange}
+            className="w-full p-2 border border-gray-300 rounded-md"
+          />
+        </div>
 
-      <button
-        type="submit"
-        disabled={loading}
-        className={`mt-4 px-4 py-2 text-white rounded ${loading 
-          ? 'bg-gray-400 cursor-not-allowed' 
-          : 'bg-blue-500 hover:bg-blue-600'
-        }`}
-      >
-        {loading 
-          ? "Enregistrement..." 
-          : editData ? "Mettre à jour" : "Créer"
-        }
-      </button>
-    </form>
+        <div className="flex gap-2 mt-6">
+          <button
+            type="submit"
+            disabled={loading}
+            className={`flex-1 px-4 py-2 text-white rounded-md ${loading 
+              ? 'bg-gray-400 cursor-not-allowed' 
+              : 'bg-blue-500 hover:bg-blue-600'
+            }`}
+          >
+            {loading 
+              ? "Enregistrement..." 
+              : editData ? "Mettre à jour" : "Créer"
+            }
+          </button>
+          <button
+            type="button"
+            onClick={onClose}
+            className="flex-1 px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
+          >
+            Annuler
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 

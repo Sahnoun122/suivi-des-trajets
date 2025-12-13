@@ -1,21 +1,46 @@
 import { useState } from "react";
 import { useMaintenance } from "../../context/MaintenanceContext";
 import MaintenanceForm from "../../components/admin/MaintenanceForm";
+
 const MaintenancePage = () => {
   const { maintenances, fetchMaintenances } = useMaintenance();
   const [editMaintenance, setEditMaintenance] = useState(null);
+  const [openForm, setOpenForm] = useState(false);
 
   const handleEdit = (m) => {
     setEditMaintenance(m);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    setOpenForm(true);
+  };
+
+  const handleAdd = () => {
+    setEditMaintenance(null);
+    setOpenForm(true);
+  };
+
+  const closeForm = () => {
+    setOpenForm(false);
+    setEditMaintenance(null);
   };
 
   return (
-    <div className="p-8">
-      <MaintenanceForm
-        editData={editMaintenance}
-        onClose={() => setEditMaintenance(null)}
-      />
+    <div className="maintenance-page max-w-6xl mx-auto p-6 bg-gray-50 rounded-lg shadow-md mt-6">
+      <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">
+        Gestion des Maintenances
+      </h1>
+
+      <button
+        className="bg-blue-600 text-white px-4 py-2 rounded-md mb-4 hover:bg-blue-700"
+        onClick={handleAdd}
+      >
+        Ajouter une maintenance
+      </button>
+
+      {openForm && (
+        <MaintenanceForm
+          editData={editMaintenance}
+          onClose={closeForm}
+        />
+      )}
 
       <h2 className="text-2xl font-bold mb-4">Liste des Maintenances</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -1,20 +1,45 @@
 import { useState } from "react";
 import TripForm from "../../components/admin/TripForm";
 import { useTrip } from "../../context/TripContext";
+
 const TripPage = () => {
   const { trips, loading, deleteTrip } = useTrip();
   const [editTrip, setEditTrip] = useState(null);
+  const [openForm, setOpenForm] = useState(false);
 
   const handleEdit = (trip) => {
     setEditTrip(trip);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    setOpenForm(true);
+  };
+
+  const handleAdd = () => {
+    setEditTrip(null);
+    setOpenForm(true);
+  };
+
+  const closeForm = () => {
+    setOpenForm(false);
+    setEditTrip(null);
   };
 
   if (loading) return <p className="text-center">Chargement...</p>;
 
   return (
-    <div className="p-8">
-      <TripForm editData={editTrip} onClose={() => setEditTrip(null)} />
+    <div className="trip-page max-w-6xl mx-auto p-6 bg-gray-50 rounded-lg shadow-md mt-6">
+      <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">
+        Gestion des Trajets
+      </h1>
+
+      <button
+        className="bg-blue-600 text-white px-4 py-2 rounded-md mb-4 hover:bg-blue-700"
+        onClick={handleAdd}
+      >
+        Ajouter un trajet
+      </button>
+
+      {openForm && (
+        <TripForm editData={editTrip} onClose={closeForm} />
+      )}
 
       <h2 className="text-2xl font-bold mb-4">Liste des Trajets</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

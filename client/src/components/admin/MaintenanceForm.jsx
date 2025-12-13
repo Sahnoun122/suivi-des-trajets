@@ -98,10 +98,20 @@ const MaintenanceForm = ({ editData, onClose }) => {
   };
 
   return (
-    <div className="max-w-xl bg-white p-6 rounded-xl shadow-md mx-auto">
-      <h2 className="text-xl font-bold mb-4">
-        {editData ? "Modifier Maintenance" : "Ajouter Maintenance"}
-      </h2>
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg max-h-[90vh] overflow-y-auto">
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-xl font-bold">
+            {editData ? "Modifier Maintenance" : "Ajouter Maintenance"}
+          </h2>
+          <button
+            type="button"
+            onClick={onClose}
+            className="text-gray-500 hover:text-gray-700 text-2xl"
+          >
+            ×
+          </button>
+        </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <select
@@ -195,21 +205,20 @@ const MaintenanceForm = ({ editData, onClose }) => {
         <div className="flex gap-2">
           <button 
             type="submit"
-            className="flex-1 bg-blue-600 text-white p-2 rounded-lg"
+            className="flex-1 bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700"
           >
             {editData ? "Modifier" : "Ajouter"}
           </button>
-          {editData && (
-            <button 
-              type="button"
-              onClick={onClose}
-              className="flex-1 bg-gray-500 text-white p-2 rounded-lg"
-            >
-              Annuler
-            </button>
-          )}
+          <button 
+            type="button"
+            onClick={onClose}
+            className="flex-1 bg-gray-500 text-white p-2 rounded-lg hover:bg-gray-600"
+          >
+            Annuler
+          </button>
         </div>
       </form>
+      </div>
     </div>
   );
 };

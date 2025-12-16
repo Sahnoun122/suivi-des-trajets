@@ -7,6 +7,7 @@ const truckSchema = new mongoose.Schema(
     modele: { type: String, required: true },
     annee: { type: Number, required: true },
     tonnage: { type: Number, required: true },
+    kilometrage: { type: Number, default: 0 },
 
     statut: {
       type: String,

@@ -22,7 +22,6 @@ export const FuelLogProvider = ({ children }) => {
   const createLog = async (data) => {
     try {
       const res = await api.post("/fuelLogs", data);
-      // Refresh the logs list to get updated data
       await fetchLogs();
       return { success: true, data: res.data };
     } catch (err) {

@@ -1,4 +1,3 @@
-// src/components/pneus/PneuForm.jsx
 import React, { useState, useContext, useEffect } from "react";
 import { PneuContext } from "../../context/PneuContext";
 import { TruckContext } from "../../context/TruckContext";
@@ -38,7 +37,6 @@ function PneuForm({ closeForm, editData, setEditData }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "monteSurType") {
-      // Réinitialiser materielId quand on change le type
       setFormData({ ...formData, [name]: value, materielId: "" });
     } else {
       setFormData({ ...formData, [name]: value });

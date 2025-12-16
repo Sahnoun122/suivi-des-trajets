@@ -63,7 +63,6 @@ export default function Navbar() {
 
   return (
     <aside className="w-64 bg-gray-900 flex flex-col h-screen">
-      {/* Logo/Header */}
       <div className="p-6 border-b border-gray-700">
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">

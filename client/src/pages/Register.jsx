@@ -53,25 +53,25 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-gray-50 to-gray-100 p-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-gray-50 to-gray-100 p-4 sm:p-6 lg:p-8">
+      <div className="w-full max-w-sm sm:max-w-md lg:max-w-lg">
         {/* Logo */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center space-x-3">
-            <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center">
-              <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="inline-flex items-center space-x-2 sm:space-x-3">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-900 rounded-lg flex items-center justify-center">
+              <svg className="w-5 h-5 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
-            <h1 className="text-3xl font-bold text-gray-900">TruckFlow</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">TruckFlow</h1>
           </div>
         </div>
 
         <form
           onSubmit={hadlRegister}
-          className="bg-white shadow-xl rounded-2xl p-8 space-y-6 border border-gray-100"
+          className="bg-white shadow-xl rounded-2xl p-6 sm:p-8 space-y-4 sm:space-y-6 border border-gray-100"
         >
-          <h2 className="text-2xl font-bold text-center mb-6 text-gray-900">Inscription</h2>
+          <h2 className="text-xl sm:text-2xl font-bold text-center mb-4 sm:mb-6 text-gray-900">Inscription</h2>
 
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-2">Nom complet</label>
@@ -80,7 +80,7 @@ export default function Register() {
               name="name"
               value={form.name}
               onChange={gere}
-              className="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all duration-200 bg-gray-50"
+              className="w-full p-3 sm:p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all duration-200 bg-gray-50 text-sm sm:text-base"
               placeholder="Votre nom complet"
             />
             {errors.name && (
@@ -100,7 +100,7 @@ export default function Register() {
               name="email"
               value={form.email}
               onChange={gere}
-              className="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all duration-200 bg-gray-50"
+              className="w-full p-3 sm:p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all duration-200 bg-gray-50 text-sm sm:text-base"
               placeholder="exemple@gmail.com"
             />
             {errors.email && (
@@ -120,7 +120,7 @@ export default function Register() {
               name="phone"
               value={form.phone}
               onChange={gere}
-              className="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all duration-200 bg-gray-50"
+              className="w-full p-3 sm:p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all duration-200 bg-gray-50 text-sm sm:text-base"
               placeholder="+33 6 12 34 56 78"
             />
             {errors.phone && (
@@ -140,7 +140,7 @@ export default function Register() {
               name="password"
               value={form.password}
               onChange={gere}
-              className="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all duration-200 bg-gray-50"
+              className="w-full p-3 sm:p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all duration-200 bg-gray-50 text-sm sm:text-base"
               placeholder="••••••••"
             />
             {errors.password && (
@@ -160,7 +160,7 @@ export default function Register() {
               name="licenseNumber"
               value={form.licenseNumber}
               onChange={gere}
-              className="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all duration-200 bg-gray-50"
+              className="w-full p-3 sm:p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all duration-200 bg-gray-50 text-sm sm:text-base"
               placeholder="Numéro de permis de conduire"
             />
             {errors.licenseNumber && (
@@ -175,7 +175,7 @@ export default function Register() {
 
           <button
             type="submit"
-            className="w-full bg-gray-900 text-white p-4 rounded-xl font-semibold hover:bg-gray-800 transition-all duration-200 mt-8 shadow-lg transform hover:scale-[1.02]"
+            className="w-full bg-gray-900 text-white p-3 sm:p-4 rounded-xl font-semibold hover:bg-gray-800 transition-all duration-200 mt-6 sm:mt-8 shadow-lg transform hover:scale-[1.02] text-sm sm:text-base"
           >
             S'inscrire
           </button>

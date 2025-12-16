@@ -2,7 +2,6 @@ import FuelLog from "../models/fuelLog.model.js";
 
 export const createFuelLog = async (req, res, next) => {
   try {
-    // Add the user who is recording this log
     const logData = {
       ...req.body,
       enregistrePar: req.user?.id || req.body.enregistrePar

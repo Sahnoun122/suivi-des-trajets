@@ -6,11 +6,25 @@ import { MongoMemoryServer } from "mongodb-memory-server";
 process.env.JWT_SECRET = "testsecret";
 
 jest.unstable_mockModule("../config/jwt.js", () => ({
+  generateToken: (payload) => "mocked-token",
   verifyToken: (token) => {
-    if (token === "admin-token") return { id: "1", role: "admin" };
-    if (token === "user-token") return { id: "2", role: "user" };
+    if (token === "admin-token") return { id: "507f1f77bcf86cd799439011", role: "admin" };
+    if (token === "user-token") return { id: "507f1f77bcf86cd799439012", role: "user" };
     throw new Error("Invalid token");
   },
+}));
+
+jest.unstable_mockModule("../models/user.model.js", () => ({
+  default: {
+    findById: jest.fn().mockImplementation((id) => ({
+      select: jest.fn().mockResolvedValue({
+        _id: id,
+        name: id === "507f1f77bcf86cd799439011" ? "Admin User" : "Regular User",
+        role: id === "507f1f77bcf86cd799439011" ? "admin" : "user",
+        status: "active"
+      })
+    }))
+  }
 }));
 
 const { default: app } = await import("../app.js");
@@ -39,7 +53,7 @@ describe("Tests Pneu & Remorque API", () => {
     installeLe: "2025-01-10T00:00:00.000Z",
     statut: "bon",
     monteSur: {
-      typeMateriel: "Camion",
+      typeMateriel: "Truck",
       materielId: new mongoose.Types.ObjectId(),
     },
   };

@@ -55,27 +55,27 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 p-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 p-4 sm:p-6 lg:p-8">
+      <div className="w-full max-w-sm sm:max-w-md lg:max-w-lg">
         {/* Logo */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center space-x-3">
-            <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center">
-              <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="inline-flex items-center space-x-2 sm:space-x-3">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-900 rounded-lg flex items-center justify-center">
+              <svg className="w-5 h-5 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
-            <h1 className="text-3xl font-bold text-gray-900">TruckFlow</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">TruckFlow</h1>
           </div>
         </div>
 
         <form
           onSubmit={handlLogin}
-          className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100"
+          className="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-gray-100"
         >
-          <h2 className="text-2xl font-bold text-center mb-8 text-gray-900">Connexion</h2>
+          <h2 className="text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 text-gray-900">Connexion</h2>
 
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Adresse Email
@@ -85,7 +85,7 @@ export default function Login() {
                 name="email"
                 value={form.email}
                 onChange={gere}
-                className="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all duration-200 bg-gray-50"
+                className="w-full p-3 sm:p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all duration-200 bg-gray-50 text-sm sm:text-base"
                 placeholder="exemple@gmail.com"
               />
               {errors.email && (
@@ -107,7 +107,7 @@ export default function Login() {
                 name="password"
                 value={form.password}
                 onChange={gere}
-                className="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all duration-200 bg-gray-50"
+                className="w-full p-3 sm:p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all duration-200 bg-gray-50 text-sm sm:text-base"
                 placeholder="••••••••"
               />
               {errors.password && (
@@ -123,7 +123,7 @@ export default function Login() {
 
           <button
             type="submit"
-            className="w-full bg-gray-900 text-white p-4 rounded-xl font-semibold hover:bg-gray-800 transition-all duration-200 mt-8 shadow-lg transform hover:scale-[1.02]"
+            className="w-full bg-gray-900 text-white p-3 sm:p-4 rounded-xl font-semibold hover:bg-gray-800 transition-all duration-200 mt-6 sm:mt-8 shadow-lg transform hover:scale-[1.02] text-sm sm:text-base"
           >
             Se Connecter
           </button>

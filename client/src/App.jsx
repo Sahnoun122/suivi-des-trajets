@@ -51,7 +51,6 @@ function App() {
           }
         />
 
-        {/* Routes admin */}
         <Route
           path="/admin"
           element={
@@ -69,7 +68,6 @@ function App() {
           <Route path="maintenance" element={<MaintenancePage />} />
         </Route>
 
-        {/* Routes driver */}
         <Route
           path="/driver"
           element={

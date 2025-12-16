@@ -20,42 +20,42 @@ export default function FuelLogsPage() {
   const validLogs = logs?.filter(log => log && log._id) || [];
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-gray-50 p-4 sm:p-6">
       <div className="max-w-7xl mx-auto">
         {/* En-tête */}
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-8">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 mb-6 sm:mb-8">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
                 Journal de Carburant
               </h1>
-              <p className="text-gray-600">
+              <p className="text-sm sm:text-base text-gray-600">
                 Suivi des consommations et maintenance des véhicules
               </p>
             </div>
             
             <button
               onClick={() => setShowForm(true)}
-              className="mt-4 md:mt-0 inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-xl font-semibold hover:bg-gray-800 transition-colors shadow-lg"
+              className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gray-900 text-white rounded-xl font-semibold hover:bg-gray-800 transition-colors shadow-lg text-sm sm:text-base"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
               </svg>
-              Nouvel enregistrement
+              <span className="hidden sm:inline">Nouvel</span> enregistrement
             </button>
           </div>
           
           {/* Statistiques rapides */}
           {validLogs.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-8">
-              <div className="bg-blue-50 rounded-xl p-4">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mt-6 sm:mt-8">
+              <div className="bg-blue-50 rounded-xl p-3 sm:p-4">
                 <div className="flex items-center">
-                  <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
-                  <div className="ml-3">
-                    <p className="text-blue-600 text-sm font-semibold">Total logs</p>
-                    <p className="text-blue-900 text-xl font-bold">{validLogs.length}</p>
+                  <div className="ml-2 sm:ml-3">
+                    <p className="text-blue-600 text-xs sm:text-sm font-semibold">Total logs</p>
+                    <p className="text-blue-900 text-lg sm:text-xl font-bold">{validLogs.length}</p>
                   </div>
                 </div>
               </div>

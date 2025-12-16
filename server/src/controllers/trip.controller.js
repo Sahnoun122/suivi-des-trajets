@@ -6,7 +6,6 @@ import Remorque from "../models/Remorque.model.js";
 
 export const createTrip = async (req, res, next) => {
   try {
-    // Validation des ObjectId
     const { chauffeurId, camionId, remorqueId } = req.body;
     
     if (!mongoose.Types.ObjectId.isValid(chauffeurId)) {
@@ -17,14 +16,12 @@ export const createTrip = async (req, res, next) => {
       return res.status(400).json({ message: "ID camion invalide" });
     }
     
-    // Convert empty string to null for remorqueId
     let processedRemorqueId = remorqueId === "" ? null : remorqueId;
     
     if (processedRemorqueId && !mongoose.Types.ObjectId.isValid(processedRemorqueId)) {
       return res.status(400).json({ message: "ID remorque invalide" });
     }
     
-    // Vérifier l'existence des objets référencés
     const chauffeur = await User.findById(chauffeurId);
     if (!chauffeur) {
       return res.status(404).json({ message: "Chauffeur non trouvé" });
@@ -42,10 +39,9 @@ export const createTrip = async (req, res, next) => {
       }
     }
     
-    // Ajouter le champ creePar (utilisateur actuel)
     const tripData = {
       ...req.body,
-      remorqueId: processedRemorqueId, // Use processed remorqueId
+      remorqueId: processedRemorqueId, 
       creePar: req.user?.id || req.body.creePar
     };
     
@@ -59,7 +55,6 @@ export const createTrip = async (req, res, next) => {
     
     const trip = await Trip.create(tripData);
     
-    // Return populated trip data
     const populatedTrip = await Trip.findById(trip._id)
       .populate("chauffeurId", "name email phone")
       .populate("camionId", "matricule marque modele")
@@ -85,7 +80,6 @@ export const getTrips = async (req, res, next) => {
 
 export const updateTrip = async (req, res, next) => {
   try {
-    // Convert empty string to null for remorqueId
     if (req.body.remorqueId === "") {
       req.body.remorqueId = null;
     }

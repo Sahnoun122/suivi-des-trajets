@@ -44,16 +44,16 @@ export default function CurrentTrip() {
 
   if (!trips || trips.length === 0) {
     return (
-      <div className="min-h-screen bg-gray-50 p-6">
+      <div className="min-h-screen bg-gray-50 p-4 sm:p-6">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-12 text-center">
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 sm:p-12 text-center">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-6 h-6 sm:w-8 sm:h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               </svg>
             </div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">Trajet en Cours</h1>
-            <p className="text-gray-600">Aucun trajet assigné pour le moment</p>
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Trajet en Cours</h1>
+            <p className="text-sm sm:text-base text-gray-600">Aucun trajet assigné pour le moment</p>
           </div>
         </div>
       </div>
@@ -61,25 +61,25 @@ export default function CurrentTrip() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-gray-50 p-4 sm:p-6">
       <div className="max-w-6xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Trajet en Cours</h1>
-          <p className="text-gray-600">Gérez vos trajets actifs et mettez à jour les informations</p>
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Trajet en Cours</h1>
+          <p className="text-sm sm:text-base text-gray-600">Gérez vos trajets actifs et mettez à jour les informations</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4">
           {trips.filter(trip => trip && trip._id).map((trip) => (
-            <div key={trip._id} className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 hover:shadow-md transition-shadow h-fit">
-              <div className="flex justify-between items-start mb-4">
-                <div className="flex items-center space-x-3 min-w-0 flex-1">
-                  <div className="w-10 h-10 bg-gray-900 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div key={trip._id} className="bg-white rounded-xl shadow-sm border border-gray-200 p-3 sm:p-4 hover:shadow-md transition-shadow h-fit">
+              <div className="flex justify-between items-start mb-3 sm:mb-4">
+                <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     </svg>
                   </div>
                   <div className="min-w-0 flex-1">
-                    <h3 className="text-base font-bold text-gray-900 truncate">{trip.reference || "Trajet"}</h3>
+                    <h3 className="text-sm sm:text-base font-bold text-gray-900 truncate">{trip.reference || "Trajet"}</h3>
                     <p className="text-xs text-gray-600 truncate">
                       {trip.origine} → {trip.destination}
                     </p>
@@ -90,11 +90,11 @@ export default function CurrentTrip() {
                 </span>
               </div>
 
-              <div className="space-y-2 mb-4">
+              <div className="space-y-2 mb-3 sm:mb-4">
                 <div className="grid grid-cols-2 gap-2">
                   <div className="bg-gray-50 rounded-lg p-2">
                     <p className="text-xs text-gray-500 mb-1">Odomètre début</p>
-                    <p className="text-sm font-semibold text-gray-900">
+                    <p className="text-xs sm:text-sm font-semibold text-gray-900">
                       {trip.odometreDebut ? `${trip.odometreDebut} km` : "—"}
                     </p>
                   </div>

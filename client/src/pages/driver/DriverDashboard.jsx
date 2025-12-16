@@ -27,13 +27,13 @@ export default function DriverDashboard() {
   }, []);
 
   return (
-    <div className="p-6">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Dashboard Conducteur</h1>
-        <p className="text-gray-600">Gérez vos trajets et votre activité</p>
+    <div className="p-4 sm:p-6 lg:p-8">
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Dashboard Conducteur</h1>
+        <p className="text-sm sm:text-base text-gray-600">Gérez vos trajets et votre activité</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
         <StatCard 
           title="Trajets assignés" 
           value={stats.total} 
@@ -60,10 +60,10 @@ export default function DriverDashboard() {
         />
       </div>
 
-      <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
-        <h2 className="text-xl font-bold text-gray-900 mb-6">Actions rapides</h2>
+      <div className="bg-white p-4 sm:p-6 rounded-2xl shadow-lg border border-gray-100">
+        <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">Actions rapides</h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           <ActionButton 
             label="Voir mes trajets" 
             path="/driver/trips"
@@ -93,9 +93,9 @@ export default function DriverDashboard() {
 
 function StatCard({ title, value, icon, color }) {
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-200 border border-gray-100">
-      <div className="flex items-center justify-between mb-4">
-        <div className={`w-12 h-12 ${color} rounded-xl flex items-center justify-center`}>
+    <div className="bg-white p-4 sm:p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-200 border border-gray-100">
+      <div className="flex items-center justify-between mb-3 sm:mb-4">
+        <div className={`w-10 h-10 sm:w-12 sm:h-12 ${color} rounded-xl flex items-center justify-center`}>
           {icon}
         </div>
       </div>

@@ -17,27 +17,27 @@ export default function HomePage() {
       {/* Header */}
       <header className="bg-white shadow-lg border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-6">
+          <div className="flex justify-between items-center py-4 sm:py-6">
             <div className="flex items-center">
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-gray-900 rounded-lg flex items-center justify-center">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="flex items-center space-x-2 sm:space-x-3">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-900 rounded-lg flex items-center justify-center">
+                  <svg className="w-4 h-4 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
-                <h1 className="text-2xl font-bold text-gray-900">TruckFlow</h1>
+                <h1 className="text-lg sm:text-2xl font-bold text-gray-900">TruckFlow</h1>
               </div>
             </div>
-            <div className="flex space-x-4">
+            <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
               <Link
                 to="/login"
-                className="px-4 py-2 text-gray-700 hover:text-gray-900 font-medium transition-colors border border-gray-300 rounded-lg hover:border-gray-400"
+                className="px-3 py-2 sm:px-4 sm:py-2 text-gray-700 hover:text-gray-900 font-medium transition-colors border border-gray-300 rounded-lg hover:border-gray-400 text-sm sm:text-base text-center"
               >
                 Connexion
               </Link>
               <Link
                 to="/register"
-                className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors font-medium shadow-lg"
+                className="px-3 py-2 sm:px-4 sm:py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors font-medium shadow-lg text-sm sm:text-base text-center"
               >
                 S'inscrire
               </Link>
@@ -48,27 +48,27 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="py-20 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-8">
+        <div className="py-12 sm:py-16 lg:py-20 text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 sm:mb-8">
             Gestion Intelligente de
             <span className="text-gray-700 block">Vos Trajets</span>
           </h1>
           
-          <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 mb-8 sm:mb-12 max-w-3xl mx-auto px-4">
             Optimisez la gestion de vos flottes de transport avec notre plateforme moderne. 
             Suivez vos trajets, gérez vos véhicules et votre équipe en temps réel.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
             <Link
               to="/register"
-              className="px-8 py-4 bg-gray-900 text-white text-lg font-semibold rounded-xl hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 shadow-xl"
+              className="px-6 py-3 sm:px-8 sm:py-4 bg-gray-900 text-white text-base sm:text-lg font-semibold rounded-xl hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 shadow-xl"
             >
               Commencer Gratuitement
             </Link>
             <Link
               to="/login"
-              className="px-8 py-4 bg-white text-gray-900 text-lg font-semibold rounded-xl hover:bg-gray-50 transition-all duration-300 border-2 border-gray-300 hover:border-gray-400 shadow-lg"
+              className="px-6 py-3 sm:px-8 sm:py-4 bg-white text-gray-900 text-base sm:text-lg font-semibold rounded-xl hover:bg-gray-50 transition-all duration-300 border-2 border-gray-300 hover:border-gray-400 shadow-lg"
             >
               Se Connecter
             </Link>
@@ -76,17 +76,17 @@ export default function HomePage() {
         </div>
 
         {/* Features Section */}
-        <div className="py-20">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <div className="py-12 sm:py-16 lg:py-20">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
               Fonctionnalités Principales
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-lg sm:text-xl text-gray-600 px-4">
               Tout ce dont vous avez besoin pour gérer efficacement vos transports
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {/* Feature 1 */}
             <div className="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100">
               <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mb-6">

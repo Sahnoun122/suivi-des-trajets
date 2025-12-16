@@ -4,11 +4,25 @@ import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
 
 jest.unstable_mockModule("../config/jwt.js", () => ({
+  generateToken: (payload) => "mocked-token",
   verifyToken: (token) => {
-    if (token === "admin-token") return { id: "1", role: "admin" };
-    if (token === "user-token") return { id: "2", role: "user" };
+    if (token === "admin-token") return { id: "507f1f77bcf86cd799439011", role: "admin" };
+    if (token === "user-token") return { id: "507f1f77bcf86cd799439012", role: "user" };
     throw new Error("Invalid token");
   },
+}));
+
+jest.unstable_mockModule("../models/user.model.js", () => ({
+  default: {
+    findById: jest.fn().mockImplementation((id) => ({
+      select: jest.fn().mockResolvedValue({
+        _id: id,
+        name: id === "507f1f77bcf86cd799439011" ? "Admin User" : "Regular User",
+        role: id === "507f1f77bcf86cd799439011" ? "admin" : "user",
+        status: "active"
+      })
+    }))
+  }
 }));
 
 const { default: app } = await import("../app.js");
@@ -30,9 +44,10 @@ describe("Truck API Tests", () => {
   const truckData = {
     matricule: "TRK-2025",
     marque: "Volvo",
-    model: "FH16",
-    year: 2021,
-    kilometrage: 150000,
+    modele: "FH16",
+    annee: 2021,
+    tonnage: 16,
+    statut: "actif",
   };
 
   it("Admin peut créer un camion", async () => {

@@ -15,12 +15,10 @@ api.interceptors.request.use((config)=>{
     return config;
 })
 
-// Interceptor de réponse pour gérer les erreurs 401
 api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      // Token invalide ou expiré, nettoyer et rediriger
       localStorage.removeItem("token");
       localStorage.removeItem("user");
       window.location.href = "/login";

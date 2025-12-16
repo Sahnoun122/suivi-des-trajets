@@ -13,38 +13,38 @@ const Trips = () => {
   }
 
   return (
-    <div className="p-6">
-      <div className="flex justify-between items-center mb-8">
+    <div className="p-4 sm:p-6 lg:p-8">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 sm:mb-8 gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Trajets</h1>
-          <p className="text-gray-600">Aperçu de tous les trajets</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Trajets</h1>
+          <p className="text-sm sm:text-base text-gray-600">Aperçu de tous les trajets</p>
         </div>
         <Link
           to="/admin/trip"
-          className="bg-gray-900 text-white px-6 py-3 rounded-xl font-semibold hover:bg-gray-800 transition-colors flex items-center gap-2 shadow-lg"
+          className="bg-gray-900 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold hover:bg-gray-800 transition-colors flex items-center gap-2 shadow-lg text-sm sm:text-base"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
           </svg>
-          Gérer les Trajets
+          <span className="hidden sm:inline">Gérer les</span> Trajets
         </Link>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-gray-50 rounded-xl p-4">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Total Trajets</h3>
-            <p className="text-3xl font-bold text-gray-900">{trips.length}</p>
+      <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-4 sm:p-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
+          <div className="bg-gray-50 rounded-xl p-3 sm:p-4">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">Total Trajets</h3>
+            <p className="text-2xl sm:text-3xl font-bold text-gray-900">{trips.length}</p>
           </div>
-          <div className="bg-gray-50 rounded-xl p-4">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">En Cours</h3>
-            <p className="text-3xl font-bold text-yellow-600">
+          <div className="bg-gray-50 rounded-xl p-3 sm:p-4">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">En Cours</h3>
+            <p className="text-2xl sm:text-3xl font-bold text-yellow-600">
               {trips.filter(t => t.statut === 'en_cours').length}
             </p>
           </div>
-          <div className="bg-gray-50 rounded-xl p-4">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Terminés</h3>
-            <p className="text-3xl font-bold text-green-600">
+          <div className="bg-gray-50 rounded-xl p-3 sm:p-4 sm:col-span-2 lg:col-span-1">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">Terminés</h3>
+            <p className="text-2xl sm:text-3xl font-bold text-green-600">
               {trips.filter(t => t.statut === 'termine').length}
             </p>
           </div>

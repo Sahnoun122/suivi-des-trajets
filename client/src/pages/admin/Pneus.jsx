@@ -76,7 +76,6 @@ function PneuPageContent() {
                 </div>
               </div>
 
-              {/* Card Content */}
               <div className="p-4 sm:p-6 space-y-4">
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
@@ -104,7 +103,6 @@ function PneuPageContent() {
                 )}
               </div>
 
-              {/* Card Actions */}
               <div className="bg-gray-50 px-6 py-4 flex justify-end gap-3">
                 <button
                   className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 transition-colors"

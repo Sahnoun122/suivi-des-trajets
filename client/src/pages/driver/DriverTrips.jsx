@@ -26,7 +26,6 @@ export default function DriverTrips() {
   return (
     <div className="min-h-screen bg-gray-50 p-4 sm:p-6">
       <div className="max-w-6xl mx-auto">
-        {/* En-tête */}
         <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 mb-6 sm:mb-8">
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Mes Trajets</h1>
           <p className="text-sm sm:text-base text-gray-600">
@@ -92,7 +91,6 @@ export default function DriverTrips() {
           )}
         </div>
 
-        {/* Liste des trajets */}
         <div className="space-y-3 sm:space-y-4">
           {!trips || trips.length === 0 ? (
             <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 sm:p-12 text-center">

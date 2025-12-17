@@ -31,7 +31,6 @@ const TripForm = ({ editData = null, onClose }) => {
     remarques: "",
   });
 
-  // Récupérer la liste des chauffeurs
   useEffect(() => {
     const fetchDrivers = async () => {
       try {
@@ -74,7 +73,6 @@ const TripForm = ({ editData = null, onClose }) => {
     setError("");
     setLoading(true);
     
-    // Validation côté client
     if (!form.chauffeurId || !form.camionId) {
       setError("Veuillez sélectionner au moins un chauffeur et un camion");
       setLoading(false);
@@ -83,11 +81,11 @@ const TripForm = ({ editData = null, onClose }) => {
     
     const payload = {
       ...form,
-      remorqueId: form.remorqueId || null, // Convert empty string to null
+      remorqueId: form.remorqueId || null,
       pointsIntermediaires: form.pointsIntermediaires
         .split(",")
         .map((p) => p.trim()),
-      creePar: user?.id || user?._id, // Ajouter l'ID de l'utilisateur connecté
+      creePar: user?.id || user?._id,
     };
     
     try {
@@ -129,7 +127,6 @@ const TripForm = ({ editData = null, onClose }) => {
 
   return (
     <div className="p-6">
-      {/* Header */}
       <div className="flex justify-between items-center mb-8">
         <div>
           <h2 className="text-2xl font-bold text-gray-900">
@@ -166,7 +163,6 @@ const TripForm = ({ editData = null, onClose }) => {
       )}
 
       <form onSubmit={handleSubmit} className="space-y-8">
-        {/* Informations générales */}
         <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-6 flex items-center">
             <svg className="w-5 h-5 mr-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -210,7 +206,6 @@ const TripForm = ({ editData = null, onClose }) => {
           </div>
         </div>
 
-        {/* Itinéraire */}
         <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-6 flex items-center">
             <svg className="w-5 h-5 mr-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -267,7 +262,6 @@ const TripForm = ({ editData = null, onClose }) => {
           </div>
         </div>
 
-        {/* Ressources */}
         <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-6 flex items-center">
             <svg className="w-5 h-5 mr-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -338,7 +332,6 @@ const TripForm = ({ editData = null, onClose }) => {
           </div>
         </div>
 
-        {/* Données véhicule */}
         <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-6 flex items-center">
             <svg className="w-5 h-5 mr-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -349,14 +342,6 @@ const TripForm = ({ editData = null, onClose }) => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Odomètre début (km)
-              </label>
-            type="number"
-            name="odometreDebut"
-            placeholder="Odomètre début"
-            value={form.odometreDebut}
-            onChange={handleChange}
               <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Odomètre début (km)
               </label>
@@ -414,7 +399,6 @@ const TripForm = ({ editData = null, onClose }) => {
           </div>
         </div>
 
-        {/* Remarques */}
         <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-6 flex items-center">
             <svg className="w-5 h-5 mr-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -433,7 +417,6 @@ const TripForm = ({ editData = null, onClose }) => {
           />
         </div>
 
-        {/* Boutons d'action */}
         <div className="flex justify-end gap-4 pt-6 border-t border-gray-200">
           <button
             type="button"

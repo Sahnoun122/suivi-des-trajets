@@ -89,11 +89,10 @@ const TripPage = () => {
         </div>
       )}
 
-      {/* Trips Grid */}
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
         {filteredTrips.map((t) => (
           <div key={t._id} className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow">
-            {/* Card Header */}
             <div className="bg-gray-50 px-4 sm:px-6 py-3 sm:py-4 border-b border-gray-200">
               <div className="flex justify-between items-start">
                 <div>
@@ -108,7 +107,6 @@ const TripPage = () => {
               </div>
             </div>
 
-            {/* Card Content */}
             <div className="p-6 space-y-4">
               <div className="flex items-center gap-3">
                 <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -169,7 +167,6 @@ const TripPage = () => {
               )}
             </div>
 
-            {/* Card Actions */}
             <div className="bg-gray-50 px-6 py-4 flex justify-end gap-3">
               <button
                 className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 transition-colors"

@@ -22,7 +22,6 @@ export default function FuelLogsPage() {
   return (
     <div className="min-h-screen bg-gray-50 p-4 sm:p-6">
       <div className="max-w-7xl mx-auto">
-        {/* En-tête */}
         <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 mb-6 sm:mb-8">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
             <div>
@@ -45,7 +44,6 @@ export default function FuelLogsPage() {
             </button>
           </div>
           
-          {/* Statistiques rapides */}
           {validLogs.length > 0 && (
             <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mt-6 sm:mt-8">
               <div className="bg-blue-50 rounded-xl p-3 sm:p-4">
@@ -108,10 +106,8 @@ export default function FuelLogsPage() {
           )}
         </div>
 
-        {/* Modal du formulaire */}
         {showForm && <FuelLogForm close={() => setShowForm(false)} />}
 
-        {/* Liste des logs */}
         <div className="space-y-4">
           {validLogs.length === 0 ? (
             <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-12 text-center">

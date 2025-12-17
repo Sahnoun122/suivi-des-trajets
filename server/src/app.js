@@ -41,14 +41,4 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/users", userRoutes);
 app.use(errorHandler);
 
-
-
-// const PORT = 6000;
-
-
-// app.listen( PORT, () => {
-//   console.log(`server demarrer sur le port ${PORT}`);
-// });
-
-
 export default app;

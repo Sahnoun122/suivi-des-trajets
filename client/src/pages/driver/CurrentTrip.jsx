@@ -121,7 +121,6 @@ export default function CurrentTrip() {
                 </div>
               </div>
 
-              {/* Remarques - Plus compactes */}
               {trip.remarques && (
                 <div className="mb-4 p-2 bg-blue-50 rounded-lg border border-blue-200">
                   <p className="text-xs text-blue-600 font-medium mb-1">Remarques</p>
@@ -129,7 +128,6 @@ export default function CurrentTrip() {
                 </div>
               )}
 
-              {/* Boutons d'actions - Empilés verticalement */}
               <div className="space-y-2 pt-3 border-t border-gray-100">
                 {getAvailableActions(trip.statut || 'planifie').map((action) => (
                   <button

@@ -20,10 +20,6 @@ export const authenticateToken = async (req, res, next) => {
       return res.status(404).json({ message: "Utilisateur introuvable" });
     }
 
-    // if (user.status && user.status !== 'active') {
-    //   return res.status(403).json({ message: "Votre compte n'est pas activé. Contactez l'administrateur." });
-    // }
-
     req.user = user; 
     next();
   } catch (err) {
@@ -32,21 +28,6 @@ export const authenticateToken = async (req, res, next) => {
   }
 };
 
-export const roles = (allowedRoles = []) => {
-  return (req, res, next) => {
-    if (!req.user) {
-      return res.status(401).json({ message: "Authentification requise" });
-    }
-
-    if (!allowedRoles.includes(req.user.role)) {
-      return res
-        .status(403)
-        .json({ message: "Accès refusé (rôle insuffisant)" });
-    }
-
-    next();
-  };
-};
 
 export const isAdmin = (req, res, next) => {
   if (req.user.role !== "admin") {

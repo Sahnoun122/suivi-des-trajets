@@ -45,13 +45,11 @@ function Drivers() {
 
   return (
     <div className="p-4 sm:p-6 lg:p-8">
-      {/* Header */}
       <div className="mb-6 sm:mb-8">
         <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Gestion des Conducteurs</h1>
         <p className="text-sm sm:text-base text-gray-600">Gérez les conducteurs et leur statut d'activité</p>
       </div>
 
-      {/* Search Bar */}
       <div className="mb-4 sm:mb-6">
         <div className="relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -69,7 +67,6 @@ function Drivers() {
         </div>
       </div>
 
-      {/* Drivers Grid */}
       <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">

@@ -4,7 +4,6 @@ import PDFDocument from "pdfkit";
 
 export const getMyTrips = async (req, res, next) => {
   try {
-    // For testing, return trips without population to avoid model registration issues
     const trips = process.env.NODE_ENV === 'test' 
       ? await Trip.find({ chauffeurId: req.user._id })
       : await Trip.find({ chauffeurId: req.user._id })
@@ -21,7 +20,6 @@ export const getMyTrips = async (req, res, next) => {
 
 export const downloadTripPDF = async (req, res, next) => {
   try {
-    // In test environment, return a simple mock response
     if (process.env.NODE_ENV === 'test') {
       return res.status(200).json({ message: "PDF generated (mock)" });
     }
@@ -46,12 +44,10 @@ export const downloadTripPDF = async (req, res, next) => {
 
     doc.pipe(res);
 
-    // En-tête
     doc.fontSize(20).font('Helvetica-Bold').text("ORDRE DE MISSION", { align: "center" });
     doc.fontSize(12).font('Helvetica').text(`Généré le: ${new Date().toLocaleString('fr-FR')}`, { align: "center" });
     doc.moveDown(2);
 
-    // Informations générales
     doc.fontSize(16).font('Helvetica-Bold').text("INFORMATIONS GÉNÉRALES", { underline: true });
     doc.moveDown();
     doc.fontSize(12).font('Helvetica');
@@ -61,7 +57,6 @@ export const downloadTripPDF = async (req, res, next) => {
     doc.text(`Créé par : ${trip.creePar?.name || 'N/A'}`);
     doc.moveDown();
 
-    // Itinéraire
     doc.fontSize(16).font('Helvetica-Bold').text("ITINÉRAIRE", { underline: true });
     doc.moveDown();
     doc.fontSize(12).font('Helvetica');
@@ -72,7 +67,6 @@ export const downloadTripPDF = async (req, res, next) => {
     }
     doc.moveDown();
 
-    // Personnel et véhicules
     doc.fontSize(16).font('Helvetica-Bold').text("PERSONNEL ET VÉHICULES", { underline: true });
     doc.moveDown();
     doc.fontSize(12).font('Helvetica');
@@ -82,7 +76,6 @@ export const downloadTripPDF = async (req, res, next) => {
     doc.text(`Numéro de permis : ${trip.chauffeurId?.licenseNumber || 'N/A'}`);
     doc.moveDown();
 
-    // Informations camion
     if (trip.camionId) {
       doc.text(`Camion - Matricule : ${trip.camionId.matricule}`);
       doc.text(`Marque : ${trip.camionId.marque}`);
@@ -95,7 +88,6 @@ export const downloadTripPDF = async (req, res, next) => {
     }
     doc.moveDown();
 
-    // Informations remorque
     if (trip.remorqueId) {
       doc.text(`Remorque - Matricule : ${trip.remorqueId.matricule}`);
       doc.text(`Type : ${trip.remorqueId.type}`);
@@ -107,7 +99,6 @@ export const downloadTripPDF = async (req, res, next) => {
     }
     doc.moveDown();
 
-    // Données de conduite
     doc.fontSize(16).font('Helvetica-Bold').text("DONNÉES DE CONDUITE", { underline: true });
     doc.moveDown();
     doc.fontSize(12).font('Helvetica');
@@ -119,7 +110,6 @@ export const downloadTripPDF = async (req, res, next) => {
     }
     doc.moveDown();
 
-    // Carburant
     doc.fontSize(16).font('Helvetica-Bold').text("CARBURANT", { underline: true });
     doc.moveDown();
     doc.fontSize(12).font('Helvetica');
@@ -131,7 +121,6 @@ export const downloadTripPDF = async (req, res, next) => {
     }
     doc.moveDown();
 
-    // Remarques
     if (trip.remarques) {
       doc.fontSize(16).font('Helvetica-Bold').text("REMARQUES", { underline: true });
       doc.moveDown();
@@ -140,7 +129,6 @@ export const downloadTripPDF = async (req, res, next) => {
       doc.moveDown();
     }
 
-    // Pied de page
     doc.fontSize(10).font('Helvetica');
     doc.text("Ce document a été généré automatiquement par le système de gestion des trajets.", 50, doc.page.height - 100, { align: "center" });
     doc.text("Signature du chauffeur : ____________________", 50, doc.page.height - 80);

@@ -44,7 +44,6 @@ describe("Tests Pneu & Remorque API", () => {
     await mongoServer.stop();
   });
 
-  // --- Données de test ---
   const pneuData = {
     numeroSerie: "PNEU-001",
     marque: "Michelin",
@@ -105,7 +104,6 @@ describe("Tests Pneu & Remorque API", () => {
     expect(res.body.message).toBe("Pneu supprimé");
   });
 
-  // ====== REMORQUE TESTS ======
   it("Admin peut créer une remorque", async () => {
     const res = await request(app)
       .post("/api/remorques")

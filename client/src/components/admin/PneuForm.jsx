@@ -94,7 +94,6 @@ function PneuForm({ closeForm, editData, setEditData }) {
   return (
     <div className="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-        {/* En-tête */}
         <div className="bg-gradient-to-r from-gray-800 to-gray-900 text-white p-6 rounded-t-2xl">
           <div className="flex justify-between items-center">
             <div>
@@ -118,7 +117,6 @@ function PneuForm({ closeForm, editData, setEditData }) {
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
-          {/* Informations du pneu */}
           <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-6 flex items-center">
               <svg className="w-5 h-5 mr-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -213,7 +211,6 @@ function PneuForm({ closeForm, editData, setEditData }) {
             </div>
           </div>
 
-          {/* Affectation véhicule */}
           <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-6 flex items-center">
               <svg className="w-5 h-5 mr-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -265,7 +262,6 @@ function PneuForm({ closeForm, editData, setEditData }) {
             </div>
           </div>
 
-          {/* Boutons d'action */}
           <div className="flex justify-end gap-4 pt-6 border-t border-gray-200">
             <button
               type="button"

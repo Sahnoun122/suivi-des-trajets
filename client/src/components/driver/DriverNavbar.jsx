@@ -39,7 +39,6 @@ export default function DriverNavbar() {
 
   return (
     <aside className="w-64 bg-gray-900 flex flex-col h-screen">
-      {/* Logo/Header */}
       <div className="p-6 border-b border-gray-700">
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
@@ -54,7 +53,6 @@ export default function DriverNavbar() {
         </div>
       </div>
 
-      {/* Navigation */}
       <nav className="flex-1 px-4 py-6">
         {menu.map((item) => (
           <NavLink
@@ -75,7 +73,6 @@ export default function DriverNavbar() {
         ))}
       </nav>
 
-      {/* Logout */}
       <div className="p-4 border-t border-gray-700">
         <button
           onClick={logout}

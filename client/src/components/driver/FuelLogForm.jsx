@@ -23,7 +23,7 @@ export default function FuelLogForm({ close }) {
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    if (error) setError(""); // Clear error when user starts typing
+    if (error) setError("");
   };
 
   const handleSubmit = async (e) => {
@@ -31,7 +31,6 @@ export default function FuelLogForm({ close }) {
     setError("");
     setLoading(true);
     
-    // Validation simple
     if (!form.camionId || !form.trajetId || !form.litres || !form.cout || !form.odometre) {
       setError("Tous les champs sont requis");
       setLoading(false);
@@ -63,7 +62,6 @@ export default function FuelLogForm({ close }) {
   return (
     <div className="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-        {/* En-tête */}
         <div className="bg-gradient-to-r from-gray-800 to-gray-900 text-white p-6 rounded-t-2xl">
           <div className="flex justify-between items-center">
             <div>
@@ -83,7 +81,6 @@ export default function FuelLogForm({ close }) {
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
-          {/* Message d'erreur */}
           {error && (
             <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-xl flex items-center">
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -93,7 +90,6 @@ export default function FuelLogForm({ close }) {
             </div>
           )}
 
-          {/* Sélection véhicule et trajet */}
           <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-6 flex items-center">
               <svg className="w-5 h-5 mr-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -145,7 +141,6 @@ export default function FuelLogForm({ close }) {
             </div>
           </div>
 
-          {/* Données de carburant */}
           <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-6 flex items-center">
               <svg className="w-5 h-5 mr-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -221,7 +216,6 @@ export default function FuelLogForm({ close }) {
               </div>
             </div>
 
-            {/* Calculs automatiques */}
             {form.litres && form.cout && (
               <div className="mt-6 p-4 bg-blue-50 rounded-xl border border-blue-200">
                 <h4 className="text-sm font-semibold text-blue-900 mb-2">Calculs automatiques</h4>
@@ -241,7 +235,6 @@ export default function FuelLogForm({ close }) {
             )}
           </div>
 
-          {/* Boutons d'action */}
           <div className="flex justify-end gap-4 pt-6 border-t border-gray-200">
             <button
               type="button"

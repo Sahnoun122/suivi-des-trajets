@@ -8,7 +8,6 @@ import Dashboard from "./pages/Dashboard";
 
 import PrivateRoute from "./components/PrivateRoute";
 
-// Admin
 import AdminLayout from "./components/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import Drivers from "./pages/admin/Drivers";
@@ -18,7 +17,6 @@ import TripPage from "./pages/admin/TripPage";
 import MaintenancePage from "./pages/admin/Maintenance";
 import Pneus from "./pages/admin/Pneus";
 
-// Driver
 import DriverNavbar from "./components/driver/DriverNavbar";
 import DriverDashboard from "./pages/driver/DriverDashboard";
 import DriverTrips from "./pages/driver/DriverTrips";

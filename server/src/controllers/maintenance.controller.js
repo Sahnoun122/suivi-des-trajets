@@ -5,7 +5,6 @@ export const createMaintenance = async (req, res, next) => {
   try {
     const { type, camionId, pneuId, programmeLe, effectueLe, cout, effectuePar } = req.body;
 
-    // Validation du type
     const validTypes = ["vidange", "changement_pneu", "inspection", "reparation"];
     if (!type || !validTypes.includes(type)) {
       const error = new Error(`Type de maintenance invalide. Types valides: ${validTypes.join(", ")}`);
@@ -13,7 +12,6 @@ export const createMaintenance = async (req, res, next) => {
       throw error;
     }
 
-    // Validation des ObjectIds requis
     if (!camionId || !mongoose.isValidObjectId(camionId)) {
       const error = new Error("camionId est requis et doit être un ObjectId valide");
       error.statusCode = 400;
@@ -26,21 +24,18 @@ export const createMaintenance = async (req, res, next) => {
       throw error;
     }
 
-    // Validation du pneuId s'il est fourni
     if (pneuId && !mongoose.isValidObjectId(pneuId)) {
       const error = new Error("pneuId doit être un ObjectId valide si fourni");
       error.statusCode = 400;
       throw error;
     }
 
-    // Validation de programmeLe
     if (!programmeLe) {
       const error = new Error("programmeLe est requis");
       error.statusCode = 400;
       throw error;
     }
 
-    // Validation de la date programmeLe
     const programmation = new Date(programmeLe);
     if (isNaN(programmation.getTime())) {
       const error = new Error("programmeLe doit être une date valide");
@@ -48,7 +43,6 @@ export const createMaintenance = async (req, res, next) => {
       throw error;
     }
 
-    // Préparer les données pour la création
     const maintenanceData = {
       type,
       camionId,
@@ -56,12 +50,10 @@ export const createMaintenance = async (req, res, next) => {
       effectuePar,
     };
 
-    // Ajouter pneuId seulement s'il est fourni et valide
     if (pneuId) {
       maintenanceData.pneuId = pneuId;
     }
 
-    // Ajouter effectueLe s'il est fourni
     if (effectueLe) {
       const dateEffectue = new Date(effectueLe);
       if (!isNaN(dateEffectue.getTime())) {
@@ -69,7 +61,6 @@ export const createMaintenance = async (req, res, next) => {
       }
     }
 
-    // Ajouter cout s'il est fourni
     if (cout !== undefined && cout !== null) {
       const coutNumber = Number(cout);
       if (!isNaN(coutNumber) && coutNumber >= 0) {
@@ -100,7 +91,6 @@ export const updateMaintenance = async (req, res, next) => {
     const { type, camionId, pneuId, programmeLe, effectueLe, cout, effectuePar } = req.body;
     const updateData = {};
 
-    // Validation du type s'il est fourni
     if (type !== undefined) {
       const validTypes = ["vidange", "changement_pneu", "inspection", "reparation"];
       if (!validTypes.includes(type)) {
@@ -111,7 +101,6 @@ export const updateMaintenance = async (req, res, next) => {
       updateData.type = type;
     }
 
-    // Validation des ObjectIds s'ils sont fournis
     if (camionId !== undefined) {
       if (!mongoose.isValidObjectId(camionId)) {
         const error = new Error("camionId doit être un ObjectId valide");
@@ -142,7 +131,6 @@ export const updateMaintenance = async (req, res, next) => {
       }
     }
 
-    // Validation des dates s'elles sont fournies
     if (programmeLe !== undefined) {
       const programmation = new Date(programmeLe);
       if (isNaN(programmation.getTime())) {
@@ -167,7 +155,6 @@ export const updateMaintenance = async (req, res, next) => {
       }
     }
 
-    // Validation du cout s'il est fourni
     if (cout !== undefined) {
       if (cout === null || cout === "") {
         updateData.cout = null;

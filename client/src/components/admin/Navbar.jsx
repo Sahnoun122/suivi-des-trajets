@@ -77,7 +77,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Navigation */}
       <nav className="flex-1 px-4 py-6">
         {menu.map((item) => (
           <NavLink
@@ -98,7 +97,6 @@ export default function Navbar() {
         ))}
       </nav>
 
-      {/* Logout */}
       <div className="p-4 border-t border-gray-700">
         <button
           onClick={logout}
